@@ -14,17 +14,7 @@ def printDivider():
 def printDivider2():
     print('---------------------------------------------------------------------------------------------------------')
 
-forLoop ='''for Statements\n
-    for <variable> in <sequence>:
-        <statements>
-    else:
-        <statements>'''
-        
-forLoop2 = '''for i in range(10):
-    print(i+1)
-'''
-
-codeInformation = {'if Statements': {'syntax': '''if <expression>:
+codeInformation = {'if Statement': {'syntax': '''if <expression>:
     <statements>
 elif <expression>:
     <statements>
@@ -39,7 +29,7 @@ elif MINUS_ONE == 0:
     printMessage('Zero')
 else:
     printMessage('Negative number')'''},
-'while Statements': {'syntax': '''while <expression>:
+'while Statement': {'syntax': '''while <expression>:
     <statements>
 else:
     <statements>''',
@@ -51,7 +41,7 @@ else:
 else:
     printMessage('Code executed at the end of the loop by else')
     printMessage('Did you notice that 13 was avoided with the continue statement?')'''},
-'for Statements': {'syntax': '''for <variable> in <sequence>:
+'for Statement': {'syntax': '''for <variable> in <sequence>:
     <statements>
 else:
     <statements>''',
@@ -68,26 +58,27 @@ else:
 
 printDivider()
 print('\n' + 'Python 3.6' + '\n')
+printDivider()
 for stat in codeInformation:
-    printDivider()
     print('\n' + stat + '\n')
     printDivider2()
     print('\n\tSyntax\n')
     printDivider2()
-    print
+    print('\n')
     printMessage(codeInformation[stat]['syntax'])
-    print
+    print('\n')
     printDivider2()
     print('\n\tCode example\n')
     printDivider2()
-    print
+    print('\n')
     printMessage(codeInformation[stat]['example'])
-    print
+    print('\n')
     printDivider2()
     print('\n\tResult\n')
     printDivider2()
-    print
+    print('\n')
     exec(codeInformation[stat]['example'])
-    print
-    
+    print('\n')
+    printDivider()
+
     
