@@ -2,12 +2,39 @@ MINUS_ONE = -1
 ONE = 1
 ZERO = 0
 PY = 'PYTHON'
-CAL = 'supercalifragilisticexpialidocious'
+LONG_WORD = 'supercalifragilisticexpialidocious'
+DIGIT_LIST = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+PY_LIST = ['P', 'Y', 'T', 'H', 'O', 'N']
 
-def printMessage(s):
-    lines = s.splitlines()
-    for line in lines:
-        print('\t\t' + line)
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+def sum(n):
+    if n == 1:
+        return 1
+    else:
+        return n + sum(n - 1)
+
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    elif n == 2:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+def printMessage(s=None):
+    if s is None:
+        print()
+    else:
+        lines = s.splitlines()
+        for line in lines:
+            print('\t\t' + line)
 
 def printDivider():
     print('=========================================================================================================')
@@ -105,7 +132,7 @@ Slicing:                Strings can be subscripted (indexed) or sliced forwards 
         0   1   2   3   4   5   6
        -6  -5  -4  -3  -2  -1       if end is not specified it means until the very end
        
-       String are unmutable, they cannot be changed (can be copied and copies modified)
+       Strings are unmutable, they cannot be changed (can be copied and copies modified)
 
 Built-in function str:  With the built-in function str(), a number can be converted to string
 Built-in function len:  With the built-in function len(), the length of a string can be found
@@ -120,7 +147,28 @@ printMessage('\Library\Frameworks\Python.framework\Versions\\\\3.6\\\\bin\python
 printMessage('WHA' + 5 * 'KA')
 printMessage('WHA'                    'KA' 'KA' 'KA' 'KA' 'KA')
 printMessage(PY[0:2] + ' ' + PY[4:6] + ' ' + PY[-6:-4] + ' ' + PY[-2:])
-printMessage('The lenght of string "' + CAL + '" is ' + str(len(CAL)))
+printMessage('The lenght of string "' + LONG_WORD + '" is ' + str(len(LONG_WORD)))
+'''
+},
+'Lists':
+{
+'syntax':
+'''\
+Creation with elements: <list_name> = [[element1,] [element2,] ...]
+Concatenate:            Lists can be concatenated with +
+Slicing:                Lists can be subscripted (indexed) or sliced like strings
+Built-in function len:  With the built-in function len(), the length of a list can be found
+Nesting:                Lists can be nested in whatever dimensions desired
+Contents:               Lists can contain any type of elements even mixed ones
+       
+       Lists unlike strings, are mutable, anything can be changed on them 
+''',
+'example':
+'''\
+odd_digits = [1, 3, 5, 7, 9]
+printMessage(str(odd_digits))
+printMessage(str(PY_LIST + DIGIT_LIST))
+printMessage()
 '''
 },
 }
@@ -152,4 +200,3 @@ for stat in codeInformation:
     print('\n')
     printDivider()
 
-    
