@@ -54,7 +54,7 @@ def printMessage(s=None):
     else:
         lines = s.splitlines()
         for line in lines:
-            print('\t\t' + line)
+            print('\t' + line)
 
 # Function to print a higher hierarchy divider
 def printDivider():
@@ -84,7 +84,7 @@ else:
 # Evaluates if a randomly generated number is possitive, negative or zero
 import random
 n = random.randint(-1,1)
-printMessage('Generated value, n = %d' % (n))
+printMessage('Generated value, n = %d' % n)
 if n > 0:
     printMessage('n is a possitive number')
 elif n == 0:
@@ -104,6 +104,7 @@ else:
 ''',
 'example':
 '''\
+# While Loop to iterate 15 times and print the value of each iteration skipping 13th
 c = ZERO
 while c < 15:
     c += 1
@@ -112,7 +113,7 @@ while c < 15:
     printMessage('Iteration #%d, c = %d' % (c, c))
 else:
     printMessage('Code executed at the end of the loop by else')
-    printMessage('Did you notice that 13 was avoided with the continue statement?')
+    printMessage('Notice that 13 was avoided with the continue statement')
 '''
 },
 'for Statement':
@@ -126,13 +127,14 @@ else:
 ''',
 'example':
 '''\
+# For Loop to iterate 15 times and print the value of each iteration skipping 13th
 for i in range(15):
     if i == 13 or i + 1 == 13:
         continue
     printMessage('Iteration #%d, i = %d' % (i + 1, i))
 else:
     printMessage('Code executed at the end of loop by else')
-    printMessage('Did you notice that 13 numbers were avoided with the continue statement?')
+    printMessage('Notice that 13 numbers were avoided with the continue statement')
 '''
 },
 'Strings':
@@ -166,14 +168,18 @@ Built-in function len:  With the built-in function len(), the length of a string
 ''',
 'example':
 '''\
-printMessage('\"Yes\", he said.')
-printMessage('"No!", he said.')
-printMessage(\'\'\'\"Isn\'t it?\", she asked.\'\'\')
-printMessage('\Library\Frameworks\Python.framework\Versions\\\\3.6\\\\bin\python')
-printMessage('WHA' + 5 * 'KA')
-printMessage('WHA'                    'KA' 'KA' 'KA' 'KA' 'KA')
-printMessage(PY[0:2] + ' ' + PY[4:6] + ' ' + PY[-6:-4] + ' ' + PY[-2:])
-printMessage('The lenght of string "' + LONG_WORD + '" is ' + str(len(LONG_WORD)))
+# Examples of String uses, quotes, slicing, concatenation and characteristics
+printMessage('Escaping double quotes inside string:\\t\\t\\t' + '\"Yes\", he said.')
+printMessage('Double quotes inside string:\\t\\t\\t\\t' + '"No!", he said.')
+printMessage('Double quotes & single quotes inside string:\\t\\t' + \'\'\'\"Isn\'t it?\", she asked.\'\'\')
+printMessage('Escaping escape characters:\\t\\t\\t\\t' + '\Library\...\Versions\\\\3.6\\\\bin\python')
+printMessage('Concatenating (+) & multiplying (*) strings:\\t\\t' + 'WHA' + 5 * 'KA')
+printMessage('Concatenating consecutive strings:\\t\\t\\t' 'WHA'
+            'KA' 'KA' 'KA' 'KA' 'KA')
+printMessage('Slicing strings (\\'%s\\') forward & backwards:\\t\\t' % PY +
+            PY[0:2] + ' ' + PY[4:6] + ' ' + PY[-6:-4] + ' ' + PY[-2:])
+printMessage('Length of string \\'%s\\':\\t' % LONG_WORD + 'The lenght of the string is "' +
+            str(len(LONG_WORD)))
 '''
 },
 'Lists':
@@ -191,13 +197,14 @@ Contents:               Lists can contain any type of elements even mixed ones
 ''',
 'example':
 '''\
+# Examples of List uses, slicing, concatenation and characteristics
 odd_digits = [1, 3, 5, 7, 9]
-printMessage(str(odd_digits))
-printMessage(str(PY_LIST + DIGIT_LIST))
+printMessage('Simple list defined with elements:' + str(odd_digits))
+printMessage('Concatenated lists:  ' + str(PY_LIST + DIGIT_LIST))
 printMessage()
 '''
 },
-'Variables and functions used':
+'Apendix:  Variables and functions used':
 {
 'syntax':
 '''\
@@ -259,11 +266,13 @@ def printMessage(s=None):
 
 # Function to print a higher hierarchy divider
 def printDivider():
-    print('=========================================================================================================')
+    print('==============================================================================
+    ===========================')
 
 # Function to print a lower hierarchy divider
 def printDivider2():
-    print('---------------------------------------------------------------------------------------------------------')
+    print('------------------------------------------------------------------------------
+    ---------------------------')
 ''',
 'example':
 '''\
@@ -271,13 +280,13 @@ def printDivider2():
 seq = []
 for d in DIGIT_LIST:
     seq.append(factorial(d))
-printMessage('Factorials of digits in DIGIT_LIST:\\t\\t\\t' + str(seq))
+printMessage('Factorials of digits in DIGIT_LIST:\\t\\t' + str(seq))
 
 # Prints a list with the sumation of the digits on DIGIT_LIST
 seq = []
 for d in DIGIT_LIST:
     seq.append(sumation(d))
-printMessage('Sumation of digits in DIGIT_LIST:\\t\\t\\t' + str(seq))
+printMessage('Sumation of digits in DIGIT_LIST:\\t\\t' + str(seq))
 
 # Prints a list with the Fibonacci number of the digits on DIGIT_LIST
 seq = []
