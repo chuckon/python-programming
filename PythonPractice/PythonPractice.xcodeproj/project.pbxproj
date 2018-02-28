@@ -8,7 +8,7 @@
 
 /* Begin PBXFileReference section */
 		D9F1806B20328CF400E4129E /* recursion.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = recursion.py; sourceTree = "<group>"; };
-		D9F1806C20328CF400E4129E /* pythonTutorialCode.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = pythonTutorialCode.py; sourceTree = "<group>"; };
+		D9F1806C20328CF400E4129E /* pythonTutorialCode.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = pythonTutorialCode.py; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.python; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */

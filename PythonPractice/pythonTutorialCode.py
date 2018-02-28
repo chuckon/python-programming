@@ -1,33 +1,53 @@
+# Negative, zero and positive constants
 MINUS_ONE = -1
 ONE = 1
 ZERO = 0
+
+# Short example string
 PY = 'PYTHON'
+
+# Long example string
 LONG_WORD = 'supercalifragilisticexpialidocious'
+
+# Digit list
 DIGIT_LIST = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Character list
 PY_LIST = ['P', 'Y', 'T', 'H', 'O', 'N']
 
+# Recursive Factorial function
 def factorial(n):
-    if n == 1:
+    if n < 2:
         return 1
     else:
         return n * factorial(n - 1)
 
-def sum(n):
-    if n == 1:
+# Recursive Sumation function
+def sumation(n):
+    if n == 0:
+        return 0
+    elif n == 1:
         return 1
     else:
-        return n + sum(n - 1)
+        return n + sumation(n - 1)
 
+# Recursive Fibonacci Number function
 def fibonacci(n):
     if n == 0:
         return 0
     elif n == 1:
         return 1
-    elif n == 2:
-        return 1
     else:
         return fibonacci(n - 1) + fibonacci(n - 2)
 
+# Recursive Fibonacci Sequence function
+def fibonacciSequence(n):
+    seq = []
+    for i in range(n + 1):
+        seq.append(fibonacci(i))
+    return seq
+
+# Print Tool Function for formatting text
 def printMessage(s=None):
     if s is None:
         print()
@@ -36,9 +56,11 @@ def printMessage(s=None):
         for line in lines:
             print('\t\t' + line)
 
+# Function to print a higher hierarchy divider
 def printDivider():
     print('=========================================================================================================')
 
+# Function to print a lower hierarchy divider
 def printDivider2():
     print('---------------------------------------------------------------------------------------------------------')
 
@@ -59,12 +81,16 @@ else:
 ''',
 'example':
 '''\
-if MINUS_ONE > 0:
-    printMessage('Possitive number')
-elif MINUS_ONE == 0:
-    printMessage('Zero')
+# Evaluates if a randomly generated number is possitive, negative or zero
+import random
+n = random.randint(-1,1)
+printMessage('Generated value, n = %d' % (n))
+if n > 0:
+    printMessage('n is a possitive number')
+elif n == 0:
+    printMessage('n is equal to zero')
 else:
-    printMessage('Negative number')
+    printMessage('n is a negative number')
 '''
 },
 'while Statement':
@@ -169,6 +195,95 @@ odd_digits = [1, 3, 5, 7, 9]
 printMessage(str(odd_digits))
 printMessage(str(PY_LIST + DIGIT_LIST))
 printMessage()
+'''
+},
+'Variables and functions used':
+{
+'syntax':
+'''\
+# Negative, zero and positive constants
+MINUS_ONE = -1
+ONE = 1
+ZERO = 0
+
+# Short example string
+PY = 'PYTHON'
+
+# Long example string
+LONG_WORD = 'supercalifragilisticexpialidocious'
+
+# Digit list
+DIGIT_LIST = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+# Character list
+PY_LIST = ['P', 'Y', 'T', 'H', 'O', 'N']
+
+# Recursive Factorial function
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+# Recursive Sumation function
+def sumation(n):
+    if n == 1:
+        return 1
+    else:
+        return n + sum(n - 1)
+
+# Recursive Fibonacci Number function
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+# Recursive Fibonacci Sequence function
+def fibonacciSequence(n):
+    seq = []
+    for i in range(n + 1):
+        seq.append(fibonacci(i))
+    return seq
+
+# Print Tool Function for formatting text
+def printMessage(s=None):
+    if s is None:
+        print()
+    else:
+        lines = s.splitlines()
+        for line in lines:
+            print('\t\t' + line)
+
+# Function to print a higher hierarchy divider
+def printDivider():
+    print('=========================================================================================================')
+
+# Function to print a lower hierarchy divider
+def printDivider2():
+    print('---------------------------------------------------------------------------------------------------------')
+''',
+'example':
+'''\
+# Prints a list with the factorial of the digits on DIGIT_LIST
+seq = []
+for d in DIGIT_LIST:
+    seq.append(factorial(d))
+printMessage('Factorials of digits in DIGIT_LIST:\\t\\t\\t' + str(seq))
+
+# Prints a list with the sumation of the digits on DIGIT_LIST
+seq = []
+for d in DIGIT_LIST:
+    seq.append(sumation(d))
+printMessage('Sumation of digits in DIGIT_LIST:\\t\\t\\t' + str(seq))
+
+# Prints a list with the Fibonacci number of the digits on DIGIT_LIST
+seq = []
+for d in DIGIT_LIST:
+    seq.append(fibonacci(d))
+printMessage('Fibonacci numbers of digits in DIGIT_LIST:\\t' + str(seq))
 '''
 },
 }
