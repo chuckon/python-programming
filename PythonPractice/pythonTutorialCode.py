@@ -178,7 +178,7 @@ printMessage('Concatenating consecutive strings:\\t\\t\\t' 'WHA'
             'KA' 'KA' 'KA' 'KA' 'KA')
 printMessage('Slicing strings (\\'%s\\') forward & backwards:\\t\\t' % PY +
             PY[0:2] + ' ' + PY[4:6] + ' ' + PY[-6:-4] + ' ' + PY[-2:])
-printMessage('Length of string \\'%s\\':\\t' % LONG_WORD + 'The lenght of the string is "' +
+printMessage('Length of string \\'%s\\':\\t' % LONG_WORD + 'The lenght of the string is ' +
             str(len(LONG_WORD)))
 '''
 },
@@ -199,9 +199,15 @@ Contents:               Lists can contain any type of elements even mixed ones
 '''\
 # Examples of List uses, slicing, concatenation and characteristics
 odd_digits = [1, 3, 5, 7, 9]
-printMessage('Simple list defined with elements:' + str(odd_digits))
-printMessage('Concatenated lists:  ' + str(PY_LIST + DIGIT_LIST))
-printMessage()
+printMessage('Simple list defined with elements:\\todd_digits = ' + str(odd_digits))
+printMessage('Concatenated lists:\\t\\t\\t' + str(PY_LIST + odd_digits))
+printMessage('Slicing lists forward & backwards:\\tPair:  ' + str(DIGIT_LIST[0:9:2]) +
+            ' Odd:  ' + str(DIGIT_LIST[-9::2]))
+printMessage('Length of list %s:\\t\\t' % odd_digits + str(len(odd_digits)))
+printMessage('Nested lists of slices of DIGIT_LIST:\\t' + str([DIGIT_LIST[0:2], DIGIT_LIST[2:4],
+            DIGIT_LIST[4:6],DIGIT_LIST[6:8],DIGIT_LIST[8:]]))
+printMessage('List with different types of elements:\\t' + str(['Python', 3.14, DIGIT_LIST[0:9:2],
+            7, 'X']))
 '''
 },
 'Apendix:  Variables and functions used':
