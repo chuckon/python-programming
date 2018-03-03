@@ -65,6 +65,79 @@ def printDivider2():
     print('---------------------------------------------------------------------------------------------------------')
 
 codeInformation = {
+'Strings':
+{
+'syntax':
+'''\
+Single quotes:          'Use "single" quotes to print double quotes or escape with \\, \', \"'
+Double quotes:          "Use 'double' quotes to print single quotes or escape with \\, \', \""
+Triple single quotes:   \'\'\'Triple quotes (either single or double)
+                        for multiple lines\'\'\'
+Triple double quotes:   \"\"\"Triple quotes
+                                maintain spacing
+                                    on th multiple lines
+                                        like tabs\"\"\"
+Backslash (\):          Escape characters use backslash (\\n), to escape them, double it (\\\\)
+Concat & repeat:        Strings can be concatenated with + and repeated n times with *
+Concatenate:            Strings next to each other in a sequence are automatically concatenated
+Slicing:                Strings can be subscripted (indexed) or sliced forwards and backwards
+
+        +---+---+---+---+---+---+   <stringname>[[start included]:[end excluded]]
+        | P | y | t | h | o | n |
+        +---+---+---+---+---+---+   if start is not specified it means from the very beginning
+        0   1   2   3   4   5   6
+       -6  -5  -4  -3  -2  -1       if end is not specified it means until the very end
+
+        Strings are unmutable, they cannot be changed (can be copied and copies modified)
+
+Built-in function str:  With the built-in function str(), a number can be converted to string
+Built-in function len:  With the built-in function len(), the length of a string can be found
+''',
+'example':
+'''\
+# Examples of String uses, quotes, slicing, concatenation and characteristics
+printMessage('Escaping double quotes inside string:\\t\\t\\t\\t\\t\\t' + '\"Yes\", he said.')
+printMessage('Double quotes inside string:\\t\\t\\t\\t\\t\\t\\t\\t' + '"No!", he said.')
+printMessage('Double quotes & single quotes inside string:\\t\\t\\t\\t' + \'\'\'\"Isn\'t it?\", she asked.\'\'\')
+printMessage('Escaping escape characters:\\t\\t\\t\\t\\t\\t\\t\\t\\t' +
+            '\Library\...\Versions\\\\3.6\\\\bin\python')
+printMessage('Concatenating (+) & multiplying (*) strings:\\t\\t\\t\\t' + 'WHA' + 5 * 'KA')
+printMessage('Concatenating consecutive strings:\\t\\t\\t\\t\\t\\t\\t' 'WHA'
+            'KA' 'KA' 'KA' 'KA' 'KA')
+printMessage('Slicing strings (\\'%s\\') forward & backwards:\\t\\t\\t\\t' % PY +
+            PY[0:2] + ' ' + PY[4:6] + ' ' + PY[-6:-4] + ' ' + PY[-2:])
+printMessage('Length of string \\'%s\\':\\t\\t' % LONG_WORD + 'The lenght of the string is ' +
+            str(len(LONG_WORD)))
+'''
+},
+'Lists':
+{
+'syntax':
+'''\
+Creation with elements:     <list_name> = [[element1,] [element2,] ...]
+Concatenate:                Lists can be concatenated with +
+Slicing:                    Lists can be subscripted (indexed) or sliced like strings
+Built-in function len:      With the built-in function len(), the length of a list can be found
+Nesting:                    Lists can be nested in whatever dimensions desired
+Contents:                   Lists can contain any type of elements even mixed ones
+
+    Lists unlike strings, are mutable, anything can be changed on them
+''',
+'example':
+'''\
+# Examples of List uses, slicing, concatenation and characteristics
+odd_digits = [1, 3, 5, 7, 9]
+printMessage('Simple list defined with elements:\\t\\t\\todd_digits = ' + str(odd_digits))
+printMessage('Concatenated lists:\\t\\t\\t\\t\\t\\t\\t' + str(PY_LIST + odd_digits))
+printMessage('Slicing lists forward & backwards:\\t\\t\\tPair:  ' + str(DIGIT_LIST[0:9:2]) +
+            ' Odd:  ' + str(DIGIT_LIST[-9::2]))
+printMessage('Length of list %s:\\t\\t\\t\\t' % odd_digits + str(len(odd_digits)))
+printMessage('Nested lists of slices of DIGIT_LIST:\\t\\t' + str([DIGIT_LIST[0:2], DIGIT_LIST[2:4],
+            DIGIT_LIST[4:6],DIGIT_LIST[6:8],DIGIT_LIST[8:]]))
+printMessage('List with different types of elements:\\t\\t' + str(['Python', 3.14, DIGIT_LIST[0:9:2],
+            7, 'X']))
+'''
+},
 'if Statement':
 {
 'syntax':
@@ -137,80 +210,7 @@ else:
     printMessage('Notice that 13 numbers were avoided with the continue statement')
 '''
 },
-'Strings':
-{
-'syntax':
-'''\
-Single quotes:          'Use "single" quotes to print double quotes or escape with \\, \', \"'
-Double quotes:          "Use 'double' quotes to print single quotes or escape with \\, \', \""
-Triple single quotes:   \'\'\'Triple quotes (either single or double)
-                        for multiple lines\'\'\'
-Triple double quotes:   \"\"\"Triple quotes
-                                    maintain spacing
-                                        on th multiple lines
-                                            like tabs\"\"\"
-Backslash (\):          Escape characters use backslash (\\n), to escape them, double it (\\\\)
-Concat & repeat:        Strings can be concatenated with + and repeated n times with *
-Concatenate:            Strings next to each other in a sequence are automatically concatenated
-Slicing:                Strings can be subscripted (indexed) or sliced forwards and backwards
-
-        +---+---+---+---+---+---+   <stringname>[[start included]:[end excluded]]
-        | P | y | t | h | o | n |
-        +---+---+---+---+---+---+   if start is not specified it means from the very beginning
-        0   1   2   3   4   5   6
-       -6  -5  -4  -3  -2  -1       if end is not specified it means until the very end
-       
-       Strings are unmutable, they cannot be changed (can be copied and copies modified)
-
-Built-in function str:  With the built-in function str(), a number can be converted to string
-Built-in function len:  With the built-in function len(), the length of a string can be found
-
-''',
-'example':
-'''\
-# Examples of String uses, quotes, slicing, concatenation and characteristics
-printMessage('Escaping double quotes inside string:\\t\\t\\t' + '\"Yes\", he said.')
-printMessage('Double quotes inside string:\\t\\t\\t\\t' + '"No!", he said.')
-printMessage('Double quotes & single quotes inside string:\\t\\t' + \'\'\'\"Isn\'t it?\", she asked.\'\'\')
-printMessage('Escaping escape characters:\\t\\t\\t\\t' + '\Library\...\Versions\\\\3.6\\\\bin\python')
-printMessage('Concatenating (+) & multiplying (*) strings:\\t\\t' + 'WHA' + 5 * 'KA')
-printMessage('Concatenating consecutive strings:\\t\\t\\t' 'WHA'
-            'KA' 'KA' 'KA' 'KA' 'KA')
-printMessage('Slicing strings (\\'%s\\') forward & backwards:\\t\\t' % PY +
-            PY[0:2] + ' ' + PY[4:6] + ' ' + PY[-6:-4] + ' ' + PY[-2:])
-printMessage('Length of string \\'%s\\':\\t' % LONG_WORD + 'The lenght of the string is ' +
-            str(len(LONG_WORD)))
-'''
-},
-'Lists':
-{
-'syntax':
-'''\
-Creation with elements: <list_name> = [[element1,] [element2,] ...]
-Concatenate:            Lists can be concatenated with +
-Slicing:                Lists can be subscripted (indexed) or sliced like strings
-Built-in function len:  With the built-in function len(), the length of a list can be found
-Nesting:                Lists can be nested in whatever dimensions desired
-Contents:               Lists can contain any type of elements even mixed ones
-       
-       Lists unlike strings, are mutable, anything can be changed on them 
-''',
-'example':
-'''\
-# Examples of List uses, slicing, concatenation and characteristics
-odd_digits = [1, 3, 5, 7, 9]
-printMessage('Simple list defined with elements:\\todd_digits = ' + str(odd_digits))
-printMessage('Concatenated lists:\\t\\t\\t' + str(PY_LIST + odd_digits))
-printMessage('Slicing lists forward & backwards:\\tPair:  ' + str(DIGIT_LIST[0:9:2]) +
-            ' Odd:  ' + str(DIGIT_LIST[-9::2]))
-printMessage('Length of list %s:\\t\\t' % odd_digits + str(len(odd_digits)))
-printMessage('Nested lists of slices of DIGIT_LIST:\\t' + str([DIGIT_LIST[0:2], DIGIT_LIST[2:4],
-            DIGIT_LIST[4:6],DIGIT_LIST[6:8],DIGIT_LIST[8:]]))
-printMessage('List with different types of elements:\\t' + str(['Python', 3.14, DIGIT_LIST[0:9:2],
-            7, 'X']))
-'''
-},
-'Apendix:  Variables and functions used':
+'Appendix:  Variables and functions used':
 {
 'syntax':
 '''\
