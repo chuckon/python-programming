@@ -1,3 +1,16 @@
+#'topic':
+#{
+#'purpose':
+#'''\
+#''',
+#'syntax':
+#'''\
+#''',
+#'example':
+#'''\
+#'''
+#},
+
 # Negative, zero and positive constants
 MINUS_ONE = -1
 ONE = 1
@@ -64,34 +77,89 @@ def printDivider():
 def printDivider2():
     print('---------------------------------------------------------------------------------------------------------')
 
+# Function to execute and run the whole live code tutorial
+def runLiveCodeTutorial(codeInfo):
+    printDivider()
+    print('\n' + 'Python 3.6' + '\n')
+    printDivider()
+    for topic in codeInfo:
+        print('\n' + topic + '\n')
+        printDivider2()
+        print('\n\tPurpose & Syntax\n')
+        printDivider2()
+        print('\n')
+        printMessage('Purpose:  ' + codeInfo[topic]['purpose'])
+        print('\n')
+        printMessage('Syntax:')
+        print('\n')
+        printMessage(codeInfo[topic]['syntax'])
+        print('\n')
+        printDivider2()
+        print('\n\tCode example\n')
+        printDivider2()
+        print('\n')
+        printMessage(codeInfo[topic]['example'])
+        print('\n')
+        printDivider2()
+        print('\n\tResult\n')
+        printDivider2()
+        print('\n')
+        exec(codeInfo[topic]['example'])
+        print('\n')
+        printDivider()
+
+# Dictionary with all topic information about the live code tutorial
 codeInformation = {
-'Strings':
+'range() function':
 {
+'purpose':
+'''\
+Generates arithmetic progressions as sequences of numbers to be used on iterations.
+''',
 'syntax':
 '''\
-Single quotes:          'Use "single" quotes to print double quotes or escape with \\, \', \"'
-Double quotes:          "Use 'double' quotes to print single quotes or escape with \\, \', \""
-Triple single quotes:   \'\'\'Triple quotes (either single or double)
-                        for multiple lines\'\'\'
-Triple double quotes:   \"\"\"Triple quotes
-                                maintain spacing
-                                    on th multiple lines
-                                        like tabs\"\"\"
-Backslash (\):          Escape characters use backslash (\\n), to escape them, double it (\\\\)
-Concat & repeat:        Strings can be concatenated with + and repeated n times with *
-Concatenate:            Strings next to each other in a sequence are automatically concatenated
-Slicing:                Strings can be subscripted (indexed) or sliced forwards and backwards
+* Generates a sequence 0...n-1:                      range(n)
+* Generates a sequence n...m-1:                      range(n, m)
+* Generates a sequence n...m-1 with k steps:         range(n, m, k)
+''',
+'example':
+'''\
+printMessage('Zero to n-1 sequence:\\t\\t\\t\\t' + str(list(range(10))))
+printMessage('n to m-1 sequence:\\t\\t\\t\\t\\t' + str(list(range(5, 10))))
+printMessage('n to m-1 sequence with k step:\\t\\t' + str(list(range(-10, -100, -20))))
+'''
+},
+'Strings':
+{
+'purpose':
+'''\
+Sequence of characters usually enclosed between quotes to be used mostly as text.
+''',
+'syntax':
+'''\
+* Single quotes:            'Use "single" quotes to print double quotes or escape with \\, \', \"'
+* Double quotes:            "Use 'double' quotes to print single quotes or escape with \\, \', \""
+* Triple single quotes:     \'\'\'Triple quotes (either single or double)
+                           for multiple lines\'\'\'
+* Triple double quotes:     \"\"\"Triple quotes
+                                  maintain spacing
+                                      on th multiple lines
+                                          like tabs\"\"\"
+* Backslash (\):            Escape characters use backslash (\\n), to escape them, double it (\\\\)
+* Concat & repeat:          Strings can be concatenated with + and repeated n times with *
+* Concatenate:              Strings next to each other in a sequence are automatically concatenated
+* Slicing:                  Strings can be subscripted (indexed) or sliced forwards and backwards
 
         +---+---+---+---+---+---+   <stringname>[[start included]:[end excluded]]
         | P | y | t | h | o | n |
         +---+---+---+---+---+---+   if start is not specified it means from the very beginning
         0   1   2   3   4   5   6
-       -6  -5  -4  -3  -2  -1       if end is not specified it means until the very end
+       -6  -5  -4  -3  -2  -1   N   if end is not specified it means until the very end
 
-        Strings are unmutable, they cannot be changed (can be copied and copies modified)
+        + Strings are unmutable, they cannot be changed (can be copied and copies modified)
 
-Built-in function str:  With the built-in function str(), a number can be converted to string
-Built-in function len:  With the built-in function len(), the length of a string can be found
+* Built-in function str():  With built-in function str(), a number can be converted to string
+* Built-in function len():  With built-in function len(), the length of a string can be found
 ''',
 'example':
 '''\
@@ -112,16 +180,21 @@ printMessage('Length of string \\'%s\\':\\t\\t' % LONG_WORD + 'The lenght of the
 },
 'Lists':
 {
+'purpose':
+'''\
+Compound data type used to group a comma-separated sequence of values between square brackets.
+''',
 'syntax':
 '''\
-Creation with elements:     <list_name> = [[element1,] [element2,] ...]
-Concatenate:                Lists can be concatenated with +
-Slicing:                    Lists can be subscripted (indexed) or sliced like strings
-Built-in function len:      With the built-in function len(), the length of a list can be found
+* Creation with elements:     <list_name> = [[element1,] [element2,] ...]
+* Concatenate:                Lists can be concatenated with +
+* Slicing:                    Lists can be subscripted (indexed) or sliced like strings
+* Built-in function len()     With the built-in function len(), the length of a list can be found
 Nesting:                    Lists can be nested in whatever dimensions desired
-Contents:                   Lists can contain any type of elements even mixed ones
+* Contents:                   Lists can contain any type of elements even mixed ones
+* Built-in function str():    With built-in function str() other objects can be converted to lists
 
-    Lists unlike strings, are mutable, anything can be changed on them
+        + Lists unlike strings, are mutable, anything can be changed on them
 ''',
 'example':
 '''\
@@ -136,10 +209,15 @@ printMessage('Nested lists of slices of DIGIT_LIST:\\t\\t' + str([DIGIT_LIST[0:2
             DIGIT_LIST[4:6],DIGIT_LIST[6:8],DIGIT_LIST[8:]]))
 printMessage('List with different types of elements:\\t\\t' + str(['Python', 3.14, DIGIT_LIST[0:9:2],
             7, 'X']))
+printMessage('Converting a range to a list:\\t\\t\\t\\t' + str(list(range(10))))
 '''
 },
 'if Statement':
 {
+'purpose':
+'''\
+Branch statement to control the flow of code based on boolean conditions.
+''',
 'syntax':
 '''\
 if <expression>:
@@ -168,6 +246,10 @@ else:
 },
 'while Statement':
 {
+'purpose':
+'''\
+Loop statement which executes and iterates as long as a condition remains true.
+''',
 'syntax':
 '''\
 while <expression>:
@@ -191,6 +273,10 @@ else:
 },
 'for Statement':
 {
+'purpose':
+'''\
+Loop statement which executes and iterates over the items of a sequence on its order.
+''',
 'syntax':
 '''\
 for <variable> in <sequence>:
@@ -210,8 +296,64 @@ else:
     printMessage('Notice that 13 numbers were avoided with the continue statement')
 '''
 },
+'pass Statement':
+{
+'purpose':
+'''\
+Synctactic filler statement that does nothing for other statements and structures
+          when no action is required.
+''',
+'syntax':
+'''\
+pass
+''',
+'example':
+'''\
+#Function defined that does nothing and if structure that executes it
+def whateverFunction():
+    printMessage('Function is called, but does nothing but to print this message')
+    pass
+if 0:
+    pass
+else:
+    whateverFunction()
+'''
+},
+'Function Definition':
+{
+'purpose':
+'''\
+Define subroutines and blocks of code to be invoked on demand and repeatedly.
+''',
+'syntax':
+'''\
+def <function name>([keyword_arg1[ = default_value1][, keyword_arg2[ = default_value2]] ...]):
+    <statements>
+
+        + If a default value is specified for an argument, that argument becomes optional.
+    
+        + Arguments with no default value are required.
+    
+        + Arguments can be specified positionally but only before any keyword argument is used.
+''',
+'example':
+'''\
+#Function to print only even values of Fibonacci sequence of digits
+def fibonacciEvenNumbers(n):
+    seq = {}
+    for i in DIGIT_LIST:
+        if fibonacci(i) % 2 == 0:
+            seq['Digit %d' % i] = fibonacci(i)
+    return seq
+printMessage('Fibonacci even of digits:\\t' + str(fibonacciEvenNumbers(9)))
+'''
+},
 'Appendix:  Variables and functions used':
 {
+'purpose':
+'''\
+Show the variables and functions used to run this live code tutorial.
+''',
 'syntax':
 '''\
 # Negative, zero and positive constants
@@ -268,7 +410,7 @@ def printMessage(s=None):
     else:
         lines = s.splitlines()
         for line in lines:
-            print('\t\t' + line)
+            print('\\t\\t' + line)
 
 # Function to print a higher hierarchy divider
 def printDivider():
@@ -279,6 +421,37 @@ def printDivider():
 def printDivider2():
     print('------------------------------------------------------------------------------
     ---------------------------')
+
+# Function to execute and run the whole live code tutorial
+def runLiveCodeTutorial(codeInfo):
+    printDivider()
+    print('\\n' + 'Python 3.6' + '\\n')
+    printDivider()
+    for topic in codeInfo:
+        print('\\n' + topic + '\\n')
+        printDivider2()
+        print('\\n\tPurpose & Syntax\\n')
+        printDivider2()
+        print('\\n')
+        printMessage('Purpose:  ' + codeInfo[topic]['purpose'])
+        print('\\n')
+        printMessage('Syntax:')
+        print('\\n')
+        printMessage(codeInfo[topic]['syntax'])
+        print('\\n')
+        printDivider2()
+        print('\\n\tCode example\\n')
+        printDivider2()
+        print('\\n')
+        printMessage(codeInfo[topic]['example'])
+        print('\\n')
+        printDivider2()
+        print('\\n\tResult\\n')
+        printDivider2()
+        print('\\n')
+        exec(codeInfo[topic]['example'])
+        print('\\n')
+        printDivider()
 ''',
 'example':
 '''\
@@ -286,47 +459,24 @@ def printDivider2():
 seq = []
 for d in DIGIT_LIST:
     seq.append(factorial(d))
-printMessage('Factorials of digits in DIGIT_LIST:\\t\\t' + str(seq))
-
+printMessage('Factorials of digits in DIGIT_LIST:\\t\\t\\t\\t' + str(seq))
+printDivider2()
 # Prints a list with the sumation of the digits on DIGIT_LIST
 seq = []
 for d in DIGIT_LIST:
     seq.append(sumation(d))
-printMessage('Sumation of digits in DIGIT_LIST:\\t\\t' + str(seq))
-
+printMessage('Sumation of digits in DIGIT_LIST:\\t\\t\\t\\t' + str(seq))
+printDivider2()
 # Prints a list with the Fibonacci number of the digits on DIGIT_LIST
 seq = []
 for d in DIGIT_LIST:
     seq.append(fibonacci(d))
-printMessage('Fibonacci numbers of digits in DIGIT_LIST:\\t' + str(seq))
+printMessage('Fibonacci numbers of digits in DIGIT_LIST:\\t\\t' + str(seq))
 '''
 },
 }
 
+# Main function to run the live code tutorial
+runLiveCodeTutorial(codeInformation)
 
-
-printDivider()
-print('\n' + 'Python 3.6' + '\n')
-printDivider()
-for stat in codeInformation:
-    print('\n' + stat + '\n')
-    printDivider2()
-    print('\n\tSyntax\n')
-    printDivider2()
-    print('\n')
-    printMessage(codeInformation[stat]['syntax'])
-    print('\n')
-    printDivider2()
-    print('\n\tCode example\n')
-    printDivider2()
-    print('\n')
-    printMessage(codeInformation[stat]['example'])
-    print('\n')
-    printDivider2()
-    print('\n\tResult\n')
-    printDivider2()
-    print('\n')
-    exec(codeInformation[stat]['example'])
-    print('\n')
-    printDivider()
 
