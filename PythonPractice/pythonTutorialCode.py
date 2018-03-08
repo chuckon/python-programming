@@ -335,6 +335,11 @@ def <function name>([keyword_arg1[ = default_value1][, keyword_arg2[ = default_v
         + Arguments with no default value are required.
     
         + Arguments can be specified positionally but only before any keyword argument is used.
+        
+        + A function can be invoked with an arbitrary number of arguments in a list (tuple).
+
+def <function name>(*args):
+    <statements>
 ''',
 'example':
 '''\
@@ -480,3 +485,8 @@ printMessage('Fibonacci numbers of digits in DIGIT_LIST:\\t\\t' + str(seq))
 runLiveCodeTutorial(codeInformation)
 
 
+def x(*args):
+    sep = ' '
+    return sep.join(args)
+
+printMessage(x('Carlos', 'Ivo', u'Pérez', 'Coudin'))
