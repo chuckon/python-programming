@@ -348,14 +348,33 @@ def <function name>(*args):
 ''',
 'example':
 '''\
-# Function to print only even values of Fibonacci sequence of digits
-def fibonacciEvenNumbers(n):
-    seq = {}
-    for i in DIGIT_LIST:
-        if fibonacci(i) % 2 == 0:
-            seq['Digit %d' % i] = fibonacci(i)
-    return seq
-printMessage('Fibonacci even of digits:\\t' + str(fibonacciEvenNumbers(9)))
+# Function to calculate the area of different geometric figures
+import math
+def area(n, r1 = 0, r2 = 0, l = 0, h = 0, a = 0, b = 0, d1 = 0, d2 = 0):
+    global math
+    if ((n == 0 and (r1 == 0 and r2 == 0)) or (n == 3 and (h == 0 or b == 0)) or
+            (n == 4 and l == 0 and (a == 0 or b == 0 or h == 0) and (d1 == 0 or d2 == 0)) or
+            (n > 4 and l == 0)):
+        printMessage('error')
+    else:
+        printMessage('ok')
+        if n == 0:
+            if r2 != 0:
+                pass
+                return r1 * r2 * math.pi
+        
+area(0)
+area(0, 1)
+area(3)
+area(3, h = 1)
+area(3, h = 1, b = 1)
+area(4)
+area(4, a = 1)
+area(4, d1 = 1)
+area(4, l = 1)
+area(4, a = 1, b = 1, h = 1)
+area(4, d1 = 1, d2 = 1)
+printMessage(str(area(0, 1, 1)))
 
 # Function that receives any number of arguments (strings expected) and returns them concatenated
 def x(*args):
@@ -495,5 +514,29 @@ printMessage('Fibonacci numbers of digits in DIGIT_LIST:\\t\\t' + str(seq))
 
 # Main function to run the live code tutorial
 runLiveCodeTutorial(codeInformation)
-
+import math
+printMessage(str(math.pi))
+def area(n, r1 = 0, r2 = 0, l = 0, h = 0, a = 0, b = 0, d1 = 0, d2 = 0):
+    printMessage(str(math.pi))
+    if ((n == 0 and (r1 == 0 and r2 == 0)) or (n == 3 and (h == 0 or b == 0)) or
+            (n == 4 and l == 0 and (a == 0 or b == 0 or h == 0) and (d1 == 0 or d2 == 0)) or
+            (n > 4 and l == 0)):
+        printMessage('error')
+    else:
+        printMessage('ok')
+        if n == 0:
+            if r2 != 0:
+                return r1 * r2 * math.pi
+area(0)
+area(0, 1)
+area(3)
+area(3, h = 1)
+area(3, h = 1, b = 1)
+area(4)
+area(4, a = 1)
+area(4, d1 = 1)
+area(4, l = 1)
+area(4, a = 1, b = 1, h = 1)
+area(4, d1 = 1, d2 = 1)
+area(0, 1, 1)
 
