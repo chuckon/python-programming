@@ -1,3 +1,6 @@
+# Enconding definition for special characters
+# -*- coding: utf-8 -*-
+
 #'topic':
 #{
 #'purpose':
@@ -333,17 +336,19 @@ def <function name>([keyword_arg1[ = default_value1][, keyword_arg2[ = default_v
         + If a default value is specified for an argument, that argument becomes optional.
     
         + Arguments with no default value are required.
+        
+        + An argument can be specified positionally or with a keyword.
     
         + Arguments can be specified positionally but only before any keyword argument is used.
         
-        + A function can be invoked with an arbitrary number of arguments in a list (tuple).
+        + A function can be invoked with an arbitrary number of arguments in a list (*args).
 
 def <function name>(*args):
     <statements>
 ''',
 'example':
 '''\
-#Function to print only even values of Fibonacci sequence of digits
+# Function to print only even values of Fibonacci sequence of digits
 def fibonacciEvenNumbers(n):
     seq = {}
     for i in DIGIT_LIST:
@@ -351,6 +356,13 @@ def fibonacciEvenNumbers(n):
             seq['Digit %d' % i] = fibonacci(i)
     return seq
 printMessage('Fibonacci even of digits:\\t' + str(fibonacciEvenNumbers(9)))
+
+# Function that receives any number of arguments (strings expected) and returns them concatenated
+def x(*args):
+    sep = ' '
+    return sep.join(args)
+printMessage(x('"Those', 'who', 'can', 'imagine', 'anything,', 'can', 'create', 'the',
+            'impossible."', '-', 'Alan', 'Turing'))
 '''
 },
 'Appendix:  Variables and functions used':
@@ -485,8 +497,3 @@ printMessage('Fibonacci numbers of digits in DIGIT_LIST:\\t\\t' + str(seq))
 runLiveCodeTutorial(codeInformation)
 
 
-def x(*args):
-    sep = ' '
-    return sep.join(args)
-
-printMessage(x('Carlos', 'Ivo', u'Pérez', 'Coudin'))
