@@ -352,35 +352,44 @@ def <function name>(*args):
 import math
 def area(n, r1 = 0, r2 = 0, l = 0, h = 0, a = 0, b = 0, d1 = 0, d2 = 0):
     global math
-    if ((n == 0 and (r1 == 0 and r2 == 0)) or (n == 3 and (h == 0 or b == 0)) or
-            (n == 4 and l == 0 and (a == 0 or b == 0 or h == 0) and (d1 == 0 or d2 == 0)) or
-            (n > 4 and l == 0)):
-        printMessage('error')
+    if ((n == 0 and (r1 == 0 and r2 == 0)) or
+            (n == 3 and (h == 0 or b == 0)) or
+            (n == 4 and l == 0 and ((a == 0 or b == 0) and h == 0) and (d1 == 0 or d2 == 0)) or
+            (n > 4 and l == 0) or (n == 1 or n == 2)):
+        return 0
     else:
-        printMessage('ok')
         if n == 0:
             if r2 != 0:
                 pass
                 return r1 * r2 * math.pi
-        
-area(0)
-area(0, 1)
-area(3)
-area(3, h = 1)
-area(3, h = 1, b = 1)
-area(4)
-area(4, a = 1)
-area(4, d1 = 1)
-area(4, l = 1)
-area(4, a = 1, b = 1, h = 1)
-area(4, d1 = 1, d2 = 1)
-printMessage(str(area(0, 1, 1)))
-
+            else:
+                return r1 ** 2 * math.pi
+        elif n == 3:
+            return b * h / 2
+        elif n == 4:
+            if l != 0:
+                return l ** 2
+            elif a == 0 and (b != 0 and h != 0):
+                return b * h
+            elif a != 0 and b != 0 and h != 0:
+                return (a + b) * h / 2
+            elif d1 != 0 and d2 != 0:
+                return d1 * d2 / 2
+        elif n > 4:
+            return n * l ** 2 / (4 * math.tan(math.pi/n))
+printMessage('Area of a circle of radius 3:\\t\\t\\t\\t%.2f' % area(0, 3))
+printMessage('Area of a ellipse of radiuses 2 & 4:\\t\\t\\t%.2f' % area(0, 2, 4))
+printMessage('Area of a triangle of base 8 and height 6:\\t\\t%.2f' % area(3, b = 8, h = 6))
+printMessage('Area of a square of side 5:\\t\\t\\t\\t%.2f' % area(4, 0, 0, 5))
+printMessage('Area of a quadrilateral of base 6 & height 4:\\t\\t%.2f' % area(4, b = 6, h = 4))
+printMessage('Area of a trapezoid of bases 4 & 6 and height 5:\\t%.2f' %
+            area(4, a = 4, b = 6, h = 5))
+printMessage('Area of a kite of diagonals 6 & 8:\\t\\t\\t%.2f' % area(4, d1 = 6, d2 = 8))
 # Function that receives any number of arguments (strings expected) and returns them concatenated
-def x(*args):
+def concatN(*args):
     sep = ' '
     return sep.join(args)
-printMessage(x('"Those', 'who', 'can', 'imagine', 'anything,', 'can', 'create', 'the',
+printMessage(concatN('"Those', 'who', 'can', 'imagine', 'anything,', 'can', 'create', 'the',
             'impossible."', '-', 'Alan', 'Turing'))
 '''
 },
@@ -514,29 +523,4 @@ printMessage('Fibonacci numbers of digits in DIGIT_LIST:\\t\\t' + str(seq))
 
 # Main function to run the live code tutorial
 runLiveCodeTutorial(codeInformation)
-import math
-printMessage(str(math.pi))
-def area(n, r1 = 0, r2 = 0, l = 0, h = 0, a = 0, b = 0, d1 = 0, d2 = 0):
-    printMessage(str(math.pi))
-    if ((n == 0 and (r1 == 0 and r2 == 0)) or (n == 3 and (h == 0 or b == 0)) or
-            (n == 4 and l == 0 and (a == 0 or b == 0 or h == 0) and (d1 == 0 or d2 == 0)) or
-            (n > 4 and l == 0)):
-        printMessage('error')
-    else:
-        printMessage('ok')
-        if n == 0:
-            if r2 != 0:
-                return r1 * r2 * math.pi
-area(0)
-area(0, 1)
-area(3)
-area(3, h = 1)
-area(3, h = 1, b = 1)
-area(4)
-area(4, a = 1)
-area(4, d1 = 1)
-area(4, l = 1)
-area(4, a = 1, b = 1, h = 1)
-area(4, d1 = 1, d2 = 1)
-area(0, 1, 1)
 
