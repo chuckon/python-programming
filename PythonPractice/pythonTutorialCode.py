@@ -143,7 +143,7 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 * Single quotes:            'Use "single" quotes to print double quotes or escape with \\, \', \"'
 * Double quotes:            "Use 'double' quotes to print single quotes or escape with \\, \', \""
 * Triple single quotes:     \'\'\'Triple quotes (either single or double)
-                           for multiple lines\'\'\'
+                            for multiple lines\'\'\'
 * Triple double quotes:     \"\"\"Triple quotes
                                   maintain spacing
                                       on th multiple lines
@@ -181,38 +181,80 @@ printMessage('Length of string \\'%s\\':\\t\\t' % LONG_WORD + 'The lenght of the
             str(len(LONG_WORD)))
 '''
 },
-'Lists':
+'Lists2':
 {
 'purpose':
 '''\
-Compound data type used to group a comma-separated sequence of values between square brackets.
+Compound data type to group a comma-separated sequence of values between square brackets.
 ''',
 'syntax':
 '''\
-* Creation with elements:     <list_name> = [[element1,] [element2,] ...]
+* Creation with items:        <list_name> = [[item1[, item2,]] ...]
 * Concatenate:                Lists can be concatenated with +
 * Slicing:                    Lists can be subscripted (indexed) or sliced like strings
 * Built-in function len()     With the built-in function len(), the length of a list can be found
-Nesting:                    Lists can be nested in whatever dimensions desired
-* Contents:                   Lists can contain any type of elements even mixed ones
+* Nesting:                    Lists can be nested in whatever dimensions desired
+* Contents:                   Lists can contain any type of items even mixed ones
 * Built-in function str():    With built-in function str() other objects can be converted to lists
-
         + Lists unlike strings, are mutable, anything can be changed on them
+* Lists methods:
+        + .append(<item>):                  Append an item to the end of the list
+        + .extend(<iterable>):              Extend the list by appending the iterable items
+        + .insert(<position>, <item>):      Insert an item at a given position
+        + .remove(<item>):                  Remove the first occurrence of an item in the list
+        + .pop([position]):                 Remove the last item of the list of the one at index
+        + .clear():                         Remove all items from the list
+        + .index(<item>[, start[, end]]):   Return zero-base index of the first item occurrence
+        + .count(<item>):                   Return the number of occurrences of the item in the list
+        + .sort([key=<value>[,
+            reverse=<value>]]):             Sort ascending the items in the list
+        + .reverse():                       Reverse the order of the items of the list in place
+        + .copy():                          Return a shallow copy of the list
+* List comprehensions:          Brackets containing an expression followed by a for clause, then
+                                zero or more for or if clauses.  They can be nested.
 ''',
 'example':
 '''\
 # Examples of List uses, slicing, concatenation and characteristics
-odd_digits = [1, 3, 5, 7, 9]
-printMessage('Simple list defined with elements:\\t\\t\\todd_digits = ' + str(odd_digits))
-printMessage('Concatenated lists:\\t\\t\\t\\t\\t\\t\\t' + str(PY_LIST + odd_digits))
+fruits = ['orange', 'apple', 'pear']
+tropical_fruits = ('mango', 'banana', 'pineapple')
+printMessage('Simple list defined with items:\\t\\t\\t\\tfruits = ' + str(fruits))
+printMessage('Concatenated lists:\\t\\t\\t\\t\\t\\t\\t' + str(PY_LIST + fruits))
 printMessage('Slicing lists forward & backwards:\\t\\t\\tPair:  ' + str(DIGIT_LIST[0:9:2]) +
             ' Odd:  ' + str(DIGIT_LIST[-9::2]))
-printMessage('Length of list %s:\\t\\t\\t\\t' % odd_digits + str(len(odd_digits)))
 printMessage('Nested lists of slices of DIGIT_LIST:\\t\\t' + str([DIGIT_LIST[0:2], DIGIT_LIST[2:4],
             DIGIT_LIST[4:6],DIGIT_LIST[6:8],DIGIT_LIST[8:]]))
-printMessage('List with different types of elements:\\t\\t' + str(['Python', 3.14, DIGIT_LIST[0:9:2],
+printMessage('List with different types of items:\\t\\t\\t' + str(['Python', 3.14, DIGIT_LIST[0:9:2],
             7, 'X']))
 printMessage('Converting a range to a list:\\t\\t\\t\\t' + str(list(range(10))))
+fruits.append('tangerine')
+printMessage('Append another fruit:\\t\\t\\t\\t\\t\\t' + str(fruits))
+fruits.extend(tropical_fruits)
+printMessage('Extend list with a tuple:\\t\\t\\t\\t\\t' + str(fruits))
+fruits.insert(4, 'apple')
+printMessage('Insert another fruit at position 4:\\t\\t\\t' + str(fruits))
+printMessage('Count of apples:\\t\\t\\t\\t\\t\\t\\t' + str(fruits.count('apple')))
+printMessage('First index of apples between 3 & 6:\\t\\t' + str(fruits.index('apple', 3, 6)))
+fruits.remove('apple')
+printMessage('Remove first occurrence of item:\\t\\t\\t' + str(fruits))
+fruits.pop(4)
+printMessage('Pop of item at position 4:\\t\\t\\t\\t\\t' + str(fruits))
+fruits.pop()
+fruits.pop()
+printMessage('Pop of last item twice:\\t\\t\\t\\t\\t\\t' + str(fruits))
+printMessage('Length of list fruits:\\t\\t\\t\\t\\t\\t' + str(len(fruits)))
+fruits.sort()
+printMessage('Ascending sorted list:\\t\\t\\t\\t\\t\\t' + str(fruits))
+fruits.reverse()
+printMessage('Reversed list:\\t\\t\\t\\t\\t\\t\\t\\t' + str(fruits))
+copy_fruits = fruits.copy()
+printMessage('Copied list into another variable:\\t\\t\\t' + str(copy_fruits))
+copy_fruits.clear()
+printMessage('Copied list items cleared:\\t\\t\\t\\t\\t' + str(copy_fruits))
+x=[[i for i in range(13)] for i in range(3)]
+printMessage(str(x))
+y=[[i for i in range(13)] for i in range(13)]
+printMessage(str(x))
 '''
 },
 'if Statement':
@@ -334,13 +376,9 @@ def <function name>([keyword_arg1[ = default_value1][, keyword_arg2[ = default_v
     <statements>
 
         + If a default value is specified for an argument, that argument becomes optional.
-    
         + Arguments with no default value are required.
-        
         + An argument can be specified positionally or with a keyword.
-    
         + Arguments can be specified positionally but only before any keyword argument is used.
-        
         + A function can be invoked with an arbitrary number of arguments in a list (*args).
 
 def <function name>(*args):
@@ -377,14 +415,14 @@ def area(n, r1 = 0, r2 = 0, l = 0, h = 0, a = 0, b = 0, d1 = 0, d2 = 0):
                 return d1 * d2 / 2
         elif n > 4:
             return n * l ** 2 / (4 * math.tan(math.pi/n))
-printMessage('Area of a circle of radius 3:\\t\\t\\t\\t%.2f' % area(0, 3))
-printMessage('Area of a ellipse of radiuses 2 & 4:\\t\\t\\t%.2f' % area(0, 2, 4))
-printMessage('Area of a triangle of base 8 and height 6:\\t\\t%.2f' % area(3, b = 8, h = 6))
-printMessage('Area of a square of side 5:\\t\\t\\t\\t%.2f' % area(4, 0, 0, 5))
+printMessage('Area of a circle of radius 3:\\t\\t\\t\\t\\t\\t%.2f' % area(0, 3))
+printMessage('Area of a ellipse of radiuses 2 & 4:\\t\\t\\t\\t%.2f' % area(0, 2, 4))
+printMessage('Area of a triangle of base 8 and height 6:\\t\\t\\t%.2f' % area(3, b = 8, h = 6))
+printMessage('Area of a square of side 5:\\t\\t\\t\\t\\t\\t\\t%.2f' % area(4, 0, 0, 5))
 printMessage('Area of a quadrilateral of base 6 & height 4:\\t\\t%.2f' % area(4, b = 6, h = 4))
 printMessage('Area of a trapezoid of bases 4 & 6 and height 5:\\t%.2f' %
             area(4, a = 4, b = 6, h = 5))
-printMessage('Area of a kite of diagonals 6 & 8:\\t\\t\\t%.2f' % area(4, d1 = 6, d2 = 8))
+printMessage('Area of a kite of diagonals 6 & 8:\\t\\t\\t\\t\\t%.2f' % area(4, d1 = 6, d2 = 8))
 # Function that receives any number of arguments (strings expected) and returns them concatenated
 def concatN(*args):
     sep = ' '
