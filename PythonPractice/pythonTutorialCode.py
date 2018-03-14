@@ -113,6 +113,7 @@ def runLiveCodeTutorial(codeInfo):
 
 # Dictionary with all topic information about the live code tutorial
 codeInformation = {
+# *************************************************************************************************
 'range() function':
 {
 'purpose':
@@ -121,9 +122,9 @@ Generates arithmetic progressions as sequences of numbers to be used on iteratio
 ''',
 'syntax':
 '''\
-* Generates a sequence 0...n-1:                      range(n)
-* Generates a sequence n...m-1:                      range(n, m)
-* Generates a sequence n...m-1 with k steps:         range(n, m, k)
+* Generates a sequence 0...n-1:\t\t\t\t\t\trange(n) 
+* Generates a sequence n...m-1:\t\t\t\t\t\trange(n, m)
+* Generates a sequence n...m-1 with k steps:\t\trange(n, m, k)
 ''',
 'example':
 '''\
@@ -132,6 +133,7 @@ printMessage('n to m-1 sequence:\\t\\t\\t\\t\\t' + str(list(range(5, 10))))
 printMessage('n to m-1 sequence with k step:\\t\\t' + str(list(range(-10, -100, -20))))
 '''
 },
+# *************************************************************************************************
 'Strings':
 {
 'purpose':
@@ -140,29 +142,37 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 ''',
 'syntax':
 '''\
-* Single quotes:            'Use "single" quotes to print double quotes or escape with \\, \', \"'
-* Double quotes:            "Use 'double' quotes to print single quotes or escape with \\, \', \""
-* Triple single quotes:     \'\'\'Triple quotes (either single or double)
-                            for multiple lines\'\'\'
-* Triple double quotes:     \"\"\"Triple quotes
-                                  maintain spacing
-                                      on th multiple lines
-                                          like tabs\"\"\"
-* Backslash (\):            Escape characters use backslash (\\n), to escape them, double it (\\\\)
-* Concat & repeat:          Strings can be concatenated with + and repeated n times with *
-* Concatenate:              Strings next to each other in a sequence are automatically concatenated
-* Slicing:                  Strings can be subscripted (indexed) or sliced forwards and backwards
+* Single quotes:\t\t\t'Use "single" quotes to print double quotes or escape with \\, \', \"'
+* Double quotes:\t\t\t"Use 'double' quotes to print single quotes or escape with \\, \', \""
+* Triple single quotes:\t\t\'\'\'Triple quotes (either single or double)
+\t\t\t\t\t\t\tfor multiple lines\'\'\'
+* Triple double quotes:\t\t\"\"\"Triple quotes
+\t\t\t\t\t\t\t\t\tmaintain spacing
+\t\t\t\t\t\t\t\t\t\ton th multiple lines
+\t\t\t\t\t\t\t\t\t\t\tlike tabs\"\"\"
+* Backslash (\):\t\t\tEscape characters use backslash (\\n), to escape them, double it (\\\\)
+* Concatenate & repeat:\t\tStrings can be concatenated with + and repeated n times with *
 
-        +---+---+---+---+---+---+   <stringname>[[start included]:[end excluded]]
-        | P | y | t | h | o | n |
-        +---+---+---+---+---+---+   if start is not specified it means from the very beginning
-        0   1   2   3   4   5   6
-       -6  -5  -4  -3  -2  -1   N   if end is not specified it means until the very end
+\t\t\t\t\t\t\t<string1> + <string2> + ... + <m> * <stringN>
 
-        + Strings are unmutable, they cannot be changed (can be copied and copies modified)
+* Concatenate:\t\t\t\tStrings next to each other in a sequence are automatically concatenated
 
-* Built-in function str():  With built-in function str(), a number can be converted to string
-* Built-in function len():  With built-in function len(), the length of a string can be found
+\t\t\t\t\t\t\t<string1> <string2> <string3> ... <stringN>
+
+* Slicing:\t\t\t\t\tStrings can be subscripted (indexed) or sliced forwards and backwards
+
+\t\t\t\t\t\t\t<stringname>[ [start included[:end excluded[:step]]] ]
+
+\t\t+---+---+---+---+---+---+
+\t\t| P | y | t | h | o | n |
+\t\t+---+---+---+---+---+---+\tif start is not specified it means from the very beginning
+\t\t0   1   2   3   4   5   6
+\t   -6  -5  -4  -3  -2  -1   N\tif end is not specified it means until the very end
+
+\t\t+ Strings are unmutable, they cannot be changed (can be copied and copies modified)
+
+* Built-in function str():\tWith built-in function str(), a number can be converted to string
+* Built-in function len():\tWith built-in function len(), the length of a string can be found
 ''',
 'example':
 '''\
@@ -181,7 +191,8 @@ printMessage('Length of string \\'%s\\':\\t\\t' % LONG_WORD + 'The lenght of the
             str(len(LONG_WORD)))
 '''
 },
-'Lists2':
+# *************************************************************************************************
+'Lists':
 {
 'purpose':
 '''\
@@ -189,8 +200,9 @@ Compound data type to group a comma-separated sequence of values between square 
 ''',
 'syntax':
 '''\
-* Creation with items:        <list_name> = [[item1[, item2,]] ...]
+* Creation with items:        <list_name> = [ [item1[, item2,]] ... ]
 * Concatenate:                Lists can be concatenated with +
+                                
 * Slicing:                    Lists can be subscripted (indexed) or sliced like strings
 * Built-in function len()     With the built-in function len(), the length of a list can be found
 * Nesting:                    Lists can be nested in whatever dimensions desired
@@ -251,12 +263,23 @@ copy_fruits = fruits.copy()
 printMessage('Copied list into another variable:\\t\\t\\t' + str(copy_fruits))
 copy_fruits.clear()
 printMessage('Copied list items cleared:\\t\\t\\t\\t\\t' + str(copy_fruits))
-x=[[i for i in range(13)] for i in range(3)]
-printMessage(str(x))
-y=[[i for i in range(13)] for i in range(13)]
-printMessage(str(x))
+printMessage('Matrix created with list comprenhension:\\t' + str([[i + j for i in range(4)] for j in range(1, 10, 4)]))
 '''
 },
+# *************************************************************************************************
+'del Statement':
+{
+'purpose':
+'''\
+Remove objects from memory like items in lists or lists itselves.''',
+'syntax':
+'''\
+del <object>''',
+'example':
+'''\
+'''
+},
+# *************************************************************************************************
 'if Statement':
 {
 'purpose':
@@ -289,6 +312,7 @@ else:
     printMessage('n is a negative number')
 '''
 },
+# *************************************************************************************************
 'while Statement':
 {
 'purpose':
@@ -316,6 +340,7 @@ else:
     printMessage('Notice that 13 was avoided with the continue statement')
 '''
 },
+# *************************************************************************************************
 'for Statement':
 {
 'purpose':
@@ -341,6 +366,7 @@ else:
     printMessage('Notice that 13 numbers were avoided with the continue statement')
 '''
 },
+# *************************************************************************************************
 'pass Statement':
 {
 'purpose':
@@ -364,6 +390,7 @@ else:
     whateverFunction()
 '''
 },
+# *************************************************************************************************
 'Function Definition':
 {
 'purpose':
@@ -431,6 +458,7 @@ printMessage(concatN('"Those', 'who', 'can', 'imagine', 'anything,', 'can', 'cre
             'impossible."', '-', 'Alan', 'Turing'))
 '''
 },
+# *************************************************************************************************
 'Appendix:  Variables and functions used':
 {
 'purpose':
