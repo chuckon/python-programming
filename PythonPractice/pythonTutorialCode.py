@@ -63,22 +63,86 @@ def fibonacciSequence(n):
         seq.append(fibonacci(i))
     return seq
 
+# Function that returns the syntax intervals in a message
+def getSyntaxIntervals(lines):
+    l = []
+    s = None
+    m = None
+    for i in range(len(lines)):
+        if len(lines[i]) > 0:
+            if lines[i][0] == '@':
+                s = i
+                lines[i] = lines[i][1:]
+                m = len(lines[i])
+                if lines[i][len(lines[i]) - 1] == '@':
+                    lines[i] = lines[i][:len(lines[i]) - 1]
+                    m = len(lines[i])
+                    l.append([s, i, m])
+                    s = None
+            elif lines[i][len(lines[i]) - 1] == '@':
+                lines[i] = lines[i][:len(lines[i]) - 1]
+                l.append([s, i, m])
+                s = None
+            elif s != None:
+                if len(lines[i]) > m:
+                    m = len(lines[i])
+    return l
+
+# Print Tool Function for formatting a line of text
+def printMessageLine(line=None):
+    if line is None:
+        print()
+    else:
+        print('\t' + line)
+
 # Print Tool Function for formatting text
 def printMessage(s=None):
     if s is None:
         print()
     else:
         lines = s.splitlines()
-        for line in lines:
-            print('\t' + line)
+        syntaxIntervals = getSyntaxIntervals(lines)
+        for i in range(len(lines)):
+            if len(syntaxIntervals) > 0:
+                if i == syntaxIntervals[0][0]:
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u256D' +
+                                     (syntaxIntervals[0][2] + 8) * '\u2500' + '\u256E')
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     (syntaxIntervals[0][2] + 8) * ' ' + '\u2502')
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     4 * ' ' + lines[i] + (syntaxIntervals[0][2] - len(lines[i])) *
+                                     ' ' + 4 * ' ' + '\u2502')
+                    if syntaxIntervals[0][0] == syntaxIntervals[0][1]:
+                        printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' +
+                                         '\u2502' + (syntaxIntervals[0][2] + 8) * ' ' + '\u2502')
+                        printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' +
+                                         '\u2570' + (syntaxIntervals[0][2] + 8) * '\u2500' + '\u256F')
+                        syntaxIntervals.pop(0)
+                elif i > syntaxIntervals[0][0] and i < syntaxIntervals[0][1]:
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     4 * ' ' + lines[i] + (syntaxIntervals[0][2] - len(lines[i])) *
+                                     ' ' + 4 * ' ' + '\u2502')
+                elif i == syntaxIntervals[0][1]:
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     4 * ' ' + lines[i] + (syntaxIntervals[0][2] - len(lines[i])) *
+                                     ' ' + 4 * ' ' + '\u2502')
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     (syntaxIntervals[0][2] + 8) * ' ' + '\u2502')
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2570' +
+                                     (syntaxIntervals[0][2] + 8) * '\u2500' + '\u256F')
+                    syntaxIntervals.pop(0)
+                else:
+                    printMessageLine(lines[i])
+            else:
+                printMessageLine(lines[i])
 
 # Function to print a higher hierarchy divider
 def printDivider():
-    print('=========================================================================================================')
+    print(105 * '\u2550')
 
 # Function to print a lower hierarchy divider
 def printDivider2():
-    print('---------------------------------------------------------------------------------------------------------')
+    print(105 * '\u2500')
 
 # Function to execute and run the whole live code tutorial
 def runLiveCodeTutorial(codeInfo):
@@ -122,9 +186,17 @@ Generates arithmetic progressions as sequences of numbers to be used on iteratio
 ''',
 'syntax':
 '''\
-* Generates a sequence 0...n-1:\t\t\t\t\t\trange(n) 
-* Generates a sequence n...m-1:\t\t\t\t\t\trange(n, m)
-* Generates a sequence n...m-1 with k steps:\t\trange(n, m, k)
+* Generates a sequence 0...n-1:
+
+@range(n)@
+
+* Generates a sequence n...m-1:
+
+@range(n, m)@
+
+* Generates a sequence n...m-1 with k steps:
+
+@range(n, m, k)@
 ''',
 'example':
 '''\
@@ -153,15 +225,15 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 * Backslash (\):\t\t\tEscape characters use backslash (\\n), to escape them, double it (\\\\)
 * Concatenate & repeat:\t\tStrings can be concatenated with + and repeated n times with *
 
-\t\t\t\t\t\t\t<string1> + <string2> + ... + <m> * <stringN>
+@<string_1> + <string_2> + ... + <m> * <string_N>@
 
 * Concatenate:\t\t\t\tStrings next to each other in a sequence are automatically concatenated
 
-\t\t\t\t\t\t\t<string1> <string2> <string3> ... <stringN>
+@<string_1> <string_2> <string_3> ... <string_N>@
 
 * Slicing:\t\t\t\t\tStrings can be subscripted (indexed) or sliced forwards and backwards
 
-\t\t\t\t\t\t\t<stringname>[ [start included[:end excluded[:step]]] ]
+@<string_name>[ [start_included[:end_excluded[:step]]] ]@
 
 \t\t+---+---+---+---+---+---+
 \t\t| P | y | t | h | o | n |
@@ -172,7 +244,12 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 \t\t+ Strings are unmutable, they cannot be changed (can be copied and copies modified)
 
 * Built-in function str():\tWith built-in function str(), a number can be converted to string
+
+@str(<object>)@
+
 * Built-in function len():\tWith built-in function len(), the length of a string can be found
+
+@len(<string_name>)@
 ''',
 'example':
 '''\
@@ -200,21 +277,26 @@ Compound data type to group a comma-separated sequence of values between square 
 ''',
 'syntax':
 '''\
-* Creation with items:        <list_name> = [ [item1[, item2,]] ... ]
-* Concatenate:                Lists can be concatenated with +
+* Creation with items:\tLists can be defined as an empty list (just []) or with its items
+
+@<list_name> = [ [item1[, item2,]] ... ]@
+
+* Concatenate:\t\t\tLists can be concatenated with +
+
+@<list_1> + <list_2> + ... + <list_N>@
                                 
-* Slicing:                    Lists can be subscripted (indexed) or sliced like strings
-* Built-in function len()     With the built-in function len(), the length of a list can be found
-* Nesting:                    Lists can be nested in whatever dimensions desired
-* Contents:                   Lists can contain any type of items even mixed ones
-* Built-in function str():    With built-in function str() other objects can be converted to lists
+* Slicing:\t\t\t\t\tLists can be subscripted (indexed) or sliced like strings
+* Built-in function len():\tWith the built-in function len(), the length of a list can be found
+* Nesting:\t\t\t\t\tLists can be nested in whatever dimensions desired
+* Contents:\t\t\t\t\tLists can contain any type of items even mixed ones
+* Built-in function str():\tWith built-in function str() other objects can be converted to lists
         + Lists unlike strings, are mutable, anything can be changed on them
 * Lists methods:
         + .append(<item>):                  Append an item to the end of the list
         + .extend(<iterable>):              Extend the list by appending the iterable items
         + .insert(<position>, <item>):      Insert an item at a given position
         + .remove(<item>):                  Remove the first occurrence of an item in the list
-        + .pop([position]):                 Remove the last item of the list of the one at index
+        + .pop([position]):                 Remove the last item of the list or the one at index
         + .clear():                         Remove all items from the list
         + .index(<item>[, start[, end]]):   Return zero-base index of the first item occurrence
         + .count(<item>):                   Return the number of occurrences of the item in the list
@@ -274,7 +356,7 @@ printMessage('Matrix created with list comprenhension:\\t' + str([[i + j for i i
 Remove objects from memory like items in lists or lists itselves.''',
 'syntax':
 '''\
-del <object>''',
+@del <object>@''',
 'example':
 '''\
 '''
@@ -288,7 +370,7 @@ Branch statement to control the flow of code based on boolean conditions.
 ''',
 'syntax':
 '''\
-if <expression>:
+@if <expression>:
     <statements>
 elif <expression>:
     <statements>
@@ -296,7 +378,7 @@ elif <expression>:
     <statements>
 ...
 else:
-    <statements>
+    <statements>@
 ''',
 'example':
 '''\
@@ -321,10 +403,10 @@ Loop statement which executes and iterates as long as a condition remains true.
 ''',
 'syntax':
 '''\
-while <expression>:
+@while <expression>:
     <statements>
 else:
-    <statements>
+    <statements>@
 ''',
 'example':
 '''\
@@ -349,10 +431,10 @@ Loop statement which executes and iterates over the items of a sequence on its o
 ''',
 'syntax':
 '''\
-for <variable> in <sequence>:
+@for <variable> in <sequence>:
     <statements>
 else:
-    <statements>
+    <statements>@
 ''',
 'example':
 '''\
@@ -376,7 +458,7 @@ Synctactic filler statement that does nothing for other statements and structure
 ''',
 'syntax':
 '''\
-pass
+@pass@
 ''',
 'example':
 '''\
@@ -399,8 +481,8 @@ Define subroutines and blocks of code to be invoked on demand and repeatedly.
 ''',
 'syntax':
 '''\
-def <function name>([keyword_arg1[ = default_value1][, keyword_arg2[ = default_value2]] ...]):
-    <statements>
+@def <function name>([keyword_arg1[ = default_value1][, keyword_arg2[ = default_value2]] ...]):
+    <statements>@
 
         + If a default value is specified for an argument, that argument becomes optional.
         + Arguments with no default value are required.
@@ -408,8 +490,8 @@ def <function name>([keyword_arg1[ = default_value1][, keyword_arg2[ = default_v
         + Arguments can be specified positionally but only before any keyword argument is used.
         + A function can be invoked with an arbitrary number of arguments in a list (*args).
 
-def <function name>(*args):
-    <statements>
+@def <function name>(*args):
+    <statements>@
 ''',
 'example':
 '''\
@@ -514,24 +596,86 @@ def fibonacciSequence(n):
         seq.append(fibonacci(i))
     return seq
 
+# Function that returns the syntax intervals in a message
+def getSyntaxIntervals(lines):
+    l = []
+    s = None
+    m = None
+    for i in range(len(lines)):
+        if len(lines[i]) > 0:
+            if lines[i][0] == '@':
+                s = i
+                lines[i] = lines[i][1:]
+                m = len(lines[i])
+                if lines[i][len(lines[i]) - 1] == '@':
+                    lines[i] = lines[i][:len(lines[i]) - 1]
+                    m = len(lines[i])
+                    l.append([s, i, m])
+                    s = None
+            elif lines[i][len(lines[i]) - 1] == '@':
+                lines[i] = lines[i][:len(lines[i]) - 1]
+                l.append([s, i, m])
+                s = None
+            elif s != None:
+                if len(lines[i]) > m:
+                    m = len(lines[i])
+    return l
+
+# Print Tool Function for formatting a line of text
+def printMessageLine(line=None):
+    if line is None:
+        print()
+    else:
+        print('\t' + line)
+
 # Print Tool Function for formatting text
 def printMessage(s=None):
     if s is None:
         print()
     else:
         lines = s.splitlines()
-        for line in lines:
-            print('\\t\\t' + line)
+        syntaxIntervals = getSyntaxIntervals(lines)
+        for i in range(len(lines)):
+            if len(syntaxIntervals) > 0:
+                if i == syntaxIntervals[0][0]:
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u256D' +
+                                     (syntaxIntervals[0][2] + 8) * '\u2500' + '\u256E')
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     (syntaxIntervals[0][2] + 8) * ' ' + '\u2502')
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     4 * ' ' + lines[i] + (syntaxIntervals[0][2] - len(lines[i])) *
+                                     ' ' + 4 * ' ' + '\u2502')
+                    if syntaxIntervals[0][0] == syntaxIntervals[0][1]:
+                        printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' +
+                                         '\u2502' + (syntaxIntervals[0][2] + 8) * ' ' + '\u2502')
+                        printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' +
+                                         '\u2570' + (syntaxIntervals[0][2] + 8) * '\u2500' + '\u256F')
+                        syntaxIntervals.pop(0)
+                elif i > syntaxIntervals[0][0] and i < syntaxIntervals[0][1]:
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     4 * ' ' + lines[i] + (syntaxIntervals[0][2] - len(lines[i])) *
+                                     ' ' + 4 * ' ' + '\u2502')
+                elif i == syntaxIntervals[0][1]:
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     4 * ' ' + lines[i] + (syntaxIntervals[0][2] - len(lines[i])) *
+                                     ' ' + 4 * ' ' + '\u2502')
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
+                                     (syntaxIntervals[0][2] + 8) * ' ' + '\u2502')
+                    printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2570' +
+                                     (syntaxIntervals[0][2] + 8) * '\u2500' + '\u256F')
+                    syntaxIntervals.pop(0)
+                else:
+                    printMessageLine(lines[i])
+            else:
+                printMessageLine(lines[i])
 
 # Function to print a higher hierarchy divider
 def printDivider():
-    print('==============================================================================
-    ===========================')
+    print(105 * '\u2550')
 
 # Function to print a lower hierarchy divider
 def printDivider2():
-    print('------------------------------------------------------------------------------
-    ---------------------------')
+    print(105 * '\u2500')
 
 # Function to execute and run the whole live code tutorial
 def runLiveCodeTutorial(codeInfo):
@@ -589,4 +733,3 @@ printMessage('Fibonacci numbers of digits in DIGIT_LIST:\\t\\t' + str(seq))
 
 # Main function to run the live code tutorial
 runLiveCodeTutorial(codeInformation)
-
