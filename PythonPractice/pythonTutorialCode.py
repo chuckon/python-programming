@@ -289,7 +289,10 @@ Compound data type to group a comma-separated sequence of values between square 
 * Built-in function len():\tWith the built-in function len(), the length of a list can be found
 * Nesting:\t\t\t\t\tLists can be nested in whatever dimensions desired
 * Contents:\t\t\t\t\tLists can contain any type of items even mixed ones
-* Built-in function str():\tWith built-in function str() other objects can be converted to lists
+* Built-in function list():\tWith built-in function str() other objects can be converted to lists
+
+@list([item1[, item2,]] ...)@
+
         + Lists unlike strings, are mutable, anything can be changed on them
 * Lists methods:
         + .append(<item>):                  Append an item to the end of the list
