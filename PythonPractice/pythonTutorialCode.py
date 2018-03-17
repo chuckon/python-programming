@@ -293,7 +293,8 @@ Compound data type to group a comma-separated sequence of values between square 
 
 @list([item1[, item2,]] ...)@
 
-        + Lists unlike strings, are mutable, anything can be changed on them
+\t\t+ Lists unlike strings, are mutable, anything can be changed on them
+
 * Lists methods:
         + .append(<item>):                  Append an item to the end of the list
         + .extend(<iterable>):              Extend the list by appending the iterable items
