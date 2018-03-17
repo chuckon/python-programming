@@ -284,7 +284,7 @@ Compound data type to group a comma-separated sequence of values between square 
 * Concatenate:\t\t\tLists can be concatenated with +
 
 @<list_1> + <list_2> + ... + <list_N>@
-                                
+
 * Slicing:\t\t\t\t\tLists can be subscripted (indexed) or sliced like strings
 * Built-in function len():\tWith the built-in function len(), the length of a list can be found
 * Nesting:\t\t\t\t\tLists can be nested in whatever dimensions desired
