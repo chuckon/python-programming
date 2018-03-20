@@ -343,15 +343,19 @@ printMessage('Converting a range to a list:\\t\\t\\t\\t' + str(list(range(10))))
 fruits.append('tangerine')
 printMessage('Append another fruit:\\t\\t\\t\\t\\t\\t' + str(fruits))
 fruits.extend(tropical_fruits)
-printMessage('Extend list with a tuple:\\t\\t\\t\\t\\t' + str(fruits))
+printMessage('Extend list with a tuple:\\t\\t\\t\\t\\t[\\'' + '\\', \\''.join(fruits[:5]) + '\\',' +
+            '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
 fruits.insert(4, 'apple')
-printMessage('Insert another fruit at position 4:\\t\\t' + str(fruits))
+printMessage('Insert another fruit at position 4:\\t\\t[\\'' + '\\', \\''.join(fruits[:5]) + '\\',' +
+            '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
 printMessage('Count of apples:\\t\\t\\t\\t\\t\\t\\t' + str(fruits.count('apple')))
 printMessage('First index of apples between 3 & 6:\\t\\t' + str(fruits.index('apple', 3, 6)))
 fruits.remove('apple')
-printMessage('Remove first occurrence of item:\\t\\t\\t' + str(fruits))
+printMessage('Remove first occurrence of item \\'apple\\':\\t[\\'' + '\\', \\''.join(fruits[:5]) + '\\',' +
+            '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
 fruits.pop(4)
-printMessage('Pop of item at position 4:\\t\\t\\t\\t\\t' + str(fruits))
+printMessage('Pop of item at position 4:\\t\\t\\t\\t\\t[\\'' + '\\', \\''.join(fruits[:5]) + '\\',' +
+            '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
 fruits.pop()
 fruits.pop()
 printMessage('Pop of last item twice:\\t\\t\\t\\t\\t' + str(fruits))
