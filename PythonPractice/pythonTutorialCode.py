@@ -1,6 +1,7 @@
 # Enconding definition for special characters
 # -*- coding: utf-8 -*-
 
+# *************************************************************************************************
 #'topic':
 #{
 #'purpose':
@@ -116,7 +117,8 @@ def printMessage(s=None):
                         printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' +
                                          '\u2502' + (syntaxIntervals[0][2] + 8) * ' ' + '\u2502')
                         printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' +
-                                         '\u2570' + (syntaxIntervals[0][2] + 8) * '\u2500' + '\u256F')
+                                         '\u2570' + (syntaxIntervals[0][2] + 8) * '\u2500' +
+                                         '\u256F')
                         syntaxIntervals.pop(0)
                 elif i > syntaxIntervals[0][0] and i < syntaxIntervals[0][1]:
                     printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\u2502' +
@@ -254,11 +256,12 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 \t\t0   1   2   3   4   5   6
 \t   -6  -5  -4  -3  -2  -1   N\tif end is not specified it means until the very end
 
-\t\t\u27F9 Strings are unmutable, they cannot be changed (can be copied and copies modified)
+\t\t\u27F9 Strings are immutable, they cannot be changed (can be copied and copies modified)
 
-\t\u23E3 Built-in function str():\tWith built-in function str(), a number can be converted to string
+\t\u23E3 Built-in function str():\tWith built-in function str(), a number and mostly any other type
+\t\t\t\t\t\t\t\tof object can be converted to strings (no object returns an empty string)
 
-@str(<object>)@
+@str([object])@
 
 \t\u23E3 Built-in function len():\tWith built-in function len(), the length of a string can be found
 
@@ -269,7 +272,8 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 # Examples of String uses, quotes, slicing, concatenation and characteristics
 printMessage('Escaping double quotes inside string:\\t\\t\\t\\t\\t\\t' + '\"Yes\", he said.')
 printMessage('Double quotes inside string:\\t\\t\\t\\t\\t\\t\\t\\t' + '"No!", he said.')
-printMessage('Double quotes & single quotes inside string:\\t\\t\\t\\t' + \'\'\'\"Isn\'t it?\", she asked.\'\'\')
+printMessage('Double quotes & single quotes inside string:\\t\\t\\t\\t' +
+            \'\'\'\"Isn\'t it?\", she asked.\'\'\')
 printMessage('Escaping escape characters:\\t\\t\\t\\t\\t\\t\\t\\t' +
             '\Library\...\Versions\\\\3.6\\\\bin\python')
 printMessage('Concatenating (+) & multiplying (*) strings:\\t\\t\\t\\t' + 'WHA' + 5 * 'KA')
@@ -303,14 +307,15 @@ Compound data type to group a comma-separated sequence of values between square 
 \t\t\t\t\t\t\t\tcan be found
 \t\u23E3 Nesting:\t\t\t\t\tLists can be nested in whatever dimensions desired
 \t\u23E3 Contents:\t\t\t\t\tLists can contain any type of items even mixed ones
-\t\u23E3 Built-in function list():\tWith built-in function str() other objects can be
-\t\t\t\t\t\t\t\tconverted to lists
+\t\u23E3 Built-in function list():\tWith built-in function list() other objects can be
+\t\t\t\t\t\t\t\tconverted to lists (no object returns an empty list)
 
-@list([item1[, item2,]] ...)@
+@list([object])@
 
 \t\t\u27F9 Lists unlike strings, are mutable, anything can be changed on them
 
-\t\u23E3 Lists methods:
+\t\u23E3 Lists methods and common operations:
+\t\t\u2724 <item> in <list>:\t\t\tReturn TRUE if the item is in the list, FALSE otherwise
 \t\t\u2724 .append(<item>):\t\t\t\tAppend an item to the end of the list
 \t\t\u2724 .extend(<iterable>):\t\t\tExtend the list by appending the iterable items
 \t\t\u2724 .insert(<position>, <item>):\t\tInsert an item at a given position
@@ -346,16 +351,17 @@ fruits.extend(tropical_fruits)
 printMessage('Extend list with a tuple:\\t\\t\\t\\t\\t[\\'' + '\\', \\''.join(fruits[:5]) + '\\',' +
             '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
 fruits.insert(4, 'apple')
-printMessage('Insert another fruit at position 4:\\t\\t[\\'' + '\\', \\''.join(fruits[:5]) + '\\',' +
-            '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
+printMessage('Insert another fruit at position 4:\\t\\t[\\'' + '\\', \\''.join(fruits[:5]) +
+            '\\',' + '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
 printMessage('Count of apples:\\t\\t\\t\\t\\t\\t\\t' + str(fruits.count('apple')))
 printMessage('First index of apples between 3 & 6:\\t\\t' + str(fruits.index('apple', 3, 6)))
 fruits.remove('apple')
-printMessage('Remove first occurrence of item \\'apple\\':\\t[\\'' + '\\', \\''.join(fruits[:5]) + '\\',' +
-            '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
+printMessage('Remove first occurrence of item \\'apple\\':\\t[\\'' + '\\', \\''.join(fruits[:5]) +
+            '\\',' + '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
 fruits.pop(4)
-printMessage('Pop of item at position 4:\\t\\t\\t\\t\\t[\\'' + '\\', \\''.join(fruits[:5]) + '\\',' +
-            '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) + '\\']')
+printMessage('Pop of item at position 4:\\t\\t\\t\\t\\t[\\'' + '\\', \\''.join(fruits[:5])
+            + '\\',' + '\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t \\'' + '\\', \\''.join(fruits[5:]) +
+            '\\']')
 fruits.pop()
 fruits.pop()
 printMessage('Pop of last item twice:\\t\\t\\t\\t\\t' + str(fruits))
@@ -373,14 +379,74 @@ printMessage('Matrix created with list comprenhension:\\t' + str([[i + j for i i
 '''
 },
 # *************************************************************************************************
-'del Statement':
+'Tuples':
 {
 'purpose':
 '''\
-Remove objects from memory like items in lists or lists itselves.''',
+Compound data type to group a comma-separated sequence of values between parenthesis.
+''',
 'syntax':
 '''\
-@del <object>@''',
+@<tuple_name> = [(][item1[, item2,]] ... [)]@
+
+\t\u23E3 Concatenate:\t\t\t\tTuples can be concatenated with +
+
+@<tuple_1> + <tuple_2> + ... + <tuple_N>@
+
+\t\u23E3 Slicing:\t\t\t\t\tTuples can be subscripted (indexed) or sliced like strings
+\t\u23E3 Built-in function len():\tWith the built-in function len(), the length of a tuple
+\t\t\t\t\t\t\t\tcan be found
+\t\u23E3 Nesting:\t\t\t\t\tTuples can be nested in whatever dimensions desired
+\t\u23E3 Contents:\t\t\t\t\tTuples can contain any type of items even mixed ones
+\t\u23E3 Built-in function tuple():\tWith built-in function tuple() other objects can be
+\t\t\t\t\t\t\t\tconverted to tuples (no object returns an empty tuple)
+
+@tuple([object])@
+
+\t\t\u27F9 Tuples are immutable, they cannot be changed (can be copied and copies modified)
+
+\t\u23E3 Lists methods:
+\t\t\u2724 .append(<item>):\t\t\t\tAppend an item to the end of the list
+\t\t\u2724 .extend(<iterable>):\t\t\tExtend the list by appending the iterable items
+\t\t\u2724 .insert(<position>, <item>):\t\tInsert an item at a given position
+\t\t\u2724 .remove(<item>):\t\t\t\tRemove the first occurrence of an item in the list
+\t\t\u2724 .pop([position]):\t\t\t\tRemove the last item of the list or the one at index
+\t\t\u2724 .clear():\t\t\t\t\t\tRemove all items from the list
+\t\t\u2724 .index(<item>[, start[, end]]):\tReturn zero-base index of the first item occurrence
+\t\t\u2724 .count(<item>):\t\t\t\t\tReturn the number of occurrences of the item in the list
+\t\t\u2724 .sort([key=<value>[,
+\t\t\treverse=<value>]]):\t\t\tSort ascending the items in the list
+\t\t\u2724 .reverse():\t\t\t\t\t\tReverse the order of the items of the list in place
+\t\t\u2724 .copy():\t\t\t\t\t\tReturn a shallow copy of the list
+\t\u23E3 List comprehensions:\t\tBrackets containing an expression followed by a for clause, then
+\t\t\t\t\t\t\t\tzero or more for or if clauses.  They can be nested.
+''',
+'example':
+'''\
+'''
+},
+# *************************************************************************************************
+'Sets':
+{
+'purpose':
+'''\
+''',
+'syntax':
+'''\
+''',
+'example':
+'''\
+'''
+},
+# *************************************************************************************************
+'Dictionaries':
+{
+'purpose':
+'''\
+''',
+'syntax':
+'''\
+''',
 'example':
 '''\
 '''
@@ -497,6 +563,24 @@ else:
 '''
 },
 # *************************************************************************************************
+'try Statement':
+{
+'purpose':
+'''\
+Remove objects from memory like items in lists or lists itselves.
+''',
+'syntax':
+'''\
+@del <object>@
+
+\t\t\u27F9 There is no other way to remove an item from a list given its index.
+\t\t\u27F9 The pop() function returns the value that is being removed.
+''',
+'example':
+'''\
+'''
+},
+# *************************************************************************************************
 'Function Definition':
 {
 'purpose':
@@ -562,6 +646,34 @@ def concatN(*args):
     return sep.join(args)
 printMessage(concatN('"Those', 'who', 'can', 'imagine', 'anything,', 'can', 'create', 'the',
             'impossible."', '-', 'Alan', 'Turing'))
+'''
+},
+# *************************************************************************************************
+'del Statement':
+{
+'purpose':
+'''\
+Remove objects from memory like items in lists or lists itselves.
+''',
+'syntax':
+'''\
+@del <object>@
+
+\t\t\u27F9 There is no other way to remove an item from a list given its index.
+\t\t\u27F9 The pop() function returns the value that is being removed.
+''',
+'example':
+'''\
+try:
+    fruits = ['mango', 'banana', 'pineapple', 'orange', 'apple', 'pear']
+    del fruits[1]
+    printMessage('Remove item at position 1:\\t\\t\\t\\t\\t\\t\\t' + str(fruits))
+    del fruits[2:]
+    printMessage('Remove items at position 2 and on:\\t\\t\\t\\t\\t' + str(fruits))
+    del fruits
+    printMessage('Remove the list fruits:\\t\\t\\t' + str(fruits))
+except NameError as exc:
+    printMessage('List does not longer exist, error displayed:\\t\\t' + str(exc))
 '''
 },
 # *************************************************************************************************
@@ -673,7 +785,8 @@ def printMessage(s=None):
                         printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' +
                                          '\\u2502' + (syntaxIntervals[0][2] + 8) * ' ' + '\\u2502')
                         printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' +
-                                         '\\u2570' + (syntaxIntervals[0][2] + 8) * '\\u2500' + '\\u256F')
+                                         '\\u2570' + (syntaxIntervals[0][2] + 8) * '\\u2500' +
+                                         '\\u256F')
                         syntaxIntervals.pop(0)
                 elif i > syntaxIntervals[0][0] and i < syntaxIntervals[0][1]:
                     printMessageLine((int((95 - syntaxIntervals[0][2]) / 2) - 4) * ' ' + '\\u2502' +
