@@ -316,6 +316,7 @@ Compound data type to group a comma-separated sequence of values between square 
 
 \t\u23E3 Lists methods and common operations:
 \t\t\u2724 <item> in <list>:\t\t\tReturn TRUE if the item is in the list, FALSE otherwise
+\t\t\u2724 <item> not in <list>:\t\t\tReturn TRUE if the item is not in the list, FALSE otherwise
 \t\t\u2724 .append(<item>):\t\t\t\tAppend an item to the end of the list
 \t\t\u2724 .extend(<iterable>):\t\t\tExtend the list by appending the iterable items
 \t\t\u2724 .insert(<position>, <item>):\t\tInsert an item at a given position
