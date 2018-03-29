@@ -1,7 +1,7 @@
 # Enconding definition for special characters
 # -*- coding: utf-8 -*-
 
-# *************************************************************************************************
+# **************************************************************************************************
 #'topic':
 #{
 #'purpose':
@@ -187,7 +187,7 @@ def runLiveCodeTutorial():
 
 # Dictionary with all topic information about the live code tutorial
 codeInformation = {
-# *************************************************************************************************
+# **************************************************************************************************
 'range() function':
 {
 'purpose':
@@ -215,8 +215,8 @@ printMessage('n to m-1 sequence:\\t\\t\\t\\t' + str(list(range(5, 10))))
 printMessage('n to m-1 sequence with k step:\\t\\t' + str(list(range(-10, -100, -20))))
 '''
 },
-# *************************************************************************************************
-'Strings':
+# **************************************************************************************************
+'Strings2':
 {
 'purpose':
 '''\
@@ -248,7 +248,14 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 \t\u23E3 Slicing:\t\t\t\t\tStrings can be subscripted (indexed) or sliced forwards and
 \t\t\t\t\t\t\t\tbackwards
 
-@<string_name>[ [start_included[:end_excluded[:step]]] ]@
+@<string>[ [start_included[:end_excluded[:step]]] ]@
+
+\t\u23E3 String methods and common operations:
+\t\t\u2724 <string_1> in <string_2>:\t\tReturn TRUE if the string is within the string,
+\t\t\t\t\t\tFALSE otherwise
+\t\t\u2724 <item> not in <list>:\t\t\tReturn TRUE if the item is not in the list, FALSE otherwise
+\t\t\u2724 .append(<item>):\t\t\t\tAppend an item to the end of the list
+
 
 \t\t+---+---+---+---+---+---+
 \t\t| P | y | t | h | o | n |
@@ -285,7 +292,7 @@ printMessage('Length of string \\'%s\\':\\t\\t' % LONG_WORD + 'The lenght of the
             str(len(LONG_WORD)))
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'Lists':
 {
 'purpose':
@@ -314,7 +321,7 @@ Compound data type to group a comma-separated sequence of values between square 
 
 \t\t\u27F9 Lists unlike strings, are mutable, anything can be changed on them
 
-\t\u23E3 Lists methods and common operations:
+\t\u23E3 List methods and common operations:
 \t\t\u2724 <item> in <list>:\t\t\tReturn TRUE if the item is in the list, FALSE otherwise
 \t\t\u2724 <item> not in <list>:\t\t\tReturn TRUE if the item is not in the list, FALSE otherwise
 \t\t\u2724 .append(<item>):\t\t\t\tAppend an item to the end of the list
@@ -379,7 +386,7 @@ printMessage('Matrix created with list comprenhension:\\t' + str([[i + j for i i
             for j in range(1, 10, 4)]))
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'Tuples':
 {
 'purpose':
@@ -426,7 +433,7 @@ Compound data type to group a comma-separated sequence of values between parenth
 '''\
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'Sets':
 {
 'purpose':
@@ -439,7 +446,7 @@ Compound data type to group a comma-separated sequence of values between parenth
 '''\
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'Dictionaries':
 {
 'purpose':
@@ -452,7 +459,7 @@ Compound data type to group a comma-separated sequence of values between parenth
 '''\
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'if Statement':
 {
 'purpose':
@@ -485,7 +492,7 @@ else:
     printMessage('n is a negative number')
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'while Statement':
 {
 'purpose':
@@ -513,7 +520,7 @@ else:
     printMessage('Notice that 13 was avoided with the continue statement')
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'for Statement':
 {
 'purpose':
@@ -539,7 +546,7 @@ else:
     printMessage('Notice that 13 numbers were avoided with the continue statement')
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'pass Statement':
 {
 'purpose':
@@ -563,7 +570,7 @@ else:
     whateverFunction()
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'try Statement':
 {
 'purpose':
@@ -581,7 +588,7 @@ Remove objects from memory like items in lists or lists itselves.
 '''\
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'Function Definition':
 {
 'purpose':
@@ -649,7 +656,7 @@ printMessage(concatN('"Those', 'who', 'can', 'imagine', 'anything,', 'can', 'cre
             'impossible."', '-', 'Alan', 'Turing'))
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'del Statement':
 {
 'purpose':
@@ -677,7 +684,7 @@ except NameError as exc:
     printMessage('List does not longer exist, error displayed:\\t\\t' + str(exc))
 '''
 },
-# *************************************************************************************************
+# **************************************************************************************************
 'Appendix:  Variables and functions used':
 {
 'purpose':
@@ -887,6 +894,99 @@ for d in DIGIT_LIST:
     seq.append(fibonacci(d))
 printMessage('Fibonacci numbers of digits in DIGIT_LIST:\\t\\t' + str(seq))
 printCodeTopics(topic_example)
+'''
+},
+# **************************************************************************************************
+'Strings':
+{
+'purpose':
+'''\
+Sequence of characters usually enclosed between quotes to be used mostly as text.
+''',
+'syntax':
+'''\
+\t\u23E3 Single quotes:\t\t\t\t'Use "single" quotes to print double quotes or
+\t\t\t\t\t\t\t\tescape with \\, \', \"'
+\t\u23E3 Double quotes:\t\t\t\t"Use 'double' quotes to print single quotes or
+\t\t\t\t\t\t\t\tescape with \\, \', \""
+\t\u23E3 Triple single quotes:\t\t\'\'\'Triple quotes (either single or double)
+\t\t\t\t\t\t\t\tfor multiple lines\'\'\'
+\t\u23E3 Triple double quotes:\t\t\"\"\"Triple quotes
+\t\t\t\t\t\t\t\t\t\tmaintain spacing
+\t\t\t\t\t\t\t\t\t\t\ton th multiple lines
+\t\t\t\t\t\t\t\t\t\t\t\tlike tabs\"\"\"
+\t\u23E3 Backslash (\):\t\t\t\tEscape characters use backslash (\\n), to escape them,
+\t\t\t\t\t\t\t\tdouble it (\\\\)
+\t\u23E3 Concatenate:\t\t\t\tStrings next to each other in a sequence are automatically
+\t\t\t\t\t\t\t\tconcatenated
+
+@<string_1> <string_2> <string_3> ... <string_N>@
+
+
+\t\u23E3 String methods and common operations:
+\t\t\u2724 Operator in:\t\t\tReturn TRUE if a string is within the other, FALSE otherwise
+
+@<string_1> in <string_2>@
+
+\t\t\u2724 Opertor not in:\t\t\tReturn TRUE if a string is not within the other, FALSE otherwise
+
+@<string_1> not in <string_2>@
+
+\t\t\u2724 Operator +:\t\t\t\tConcatenate two or more strings into one
+
+@<string_1> + <string_2> + ... + <string_N>@
+
+\t\t\u2724 Operator *:\t\t\t\tConcatenate a string n times into one
+
+@<n> * <string>@
+
+\t\t\u2724 Indexing:\t\t\t\tReturn the character on the position specified by the index
+
+@<string>[<index>]@
+
+\t\u23E3 Slicing:\t\t\t\t\tStrings can be subscripted (indexed) or sliced forwards and
+\t\t\t\t\t\t\t\tbackwards
+
+@<string_name>[ [start_included[:end_excluded[:step]]] ]@
+
+\t\t\u2724 <string>[ [start[:end[:step]]] ]:\tSubscript (index) or slice a string whether
+\t\t\t\t\t\t\t\t\t\t\tforward or backwards
+\t\t\u2724 .append(<item>):\t\t\t\t\tAppend an item to the end of the list
+
+
+\t\t+---+---+---+---+---+---+
+\t\t| P | y | t | h | o | n |
+\t\t+---+---+---+---+---+---+\tif start is not specified it means from the very beginning
+\t\t0   1   2   3   4   5   6
+\t   -6  -5  -4  -3  -2  -1   N\tif end is not specified it means until the very end
+
+\t\t\u27F9 Strings are immutable, they cannot be changed (can be copied and copies modified)
+
+\t\u23E3 Built-in function str():\tWith built-in function str(), a number and mostly any other type
+\t\t\t\t\t\t\t\tof object can be converted to strings (no object returns an empty string)
+
+@str([object])@
+
+\t\u23E3 Built-in function len():\tWith built-in function len(), the length of a string can be found
+
+@len(<string_name>)@
+''',
+'example':
+'''\
+# Examples of String uses, quotes, slicing, concatenation and characteristics
+printMessage('Escaping double quotes inside string:\\t\\t\\t\\t\\t\\t' + '\"Yes\", he said.')
+printMessage('Double quotes inside string:\\t\\t\\t\\t\\t\\t\\t\\t' + '"No!", he said.')
+printMessage('Double quotes & single quotes inside string:\\t\\t\\t\\t' +
+\'\'\'\"Isn\'t it?\", she asked.\'\'\')
+printMessage('Escaping escape characters:\\t\\t\\t\\t\\t\\t\\t\\t' +
+'\Library\...\Versions\\\\3.6\\\\bin\python')
+printMessage('Concatenating (+) & multiplying (*) strings:\\t\\t\\t\\t' + 'WHA' + 5 * 'KA')
+printMessage('Concatenating consecutive strings:\\t\\t\\t\\t\\t\\t\\t' 'WHA'
+'KA' 'KA' 'KA' 'KA' 'KA')
+printMessage('Slicing strings (\\'%s\\') forward & backwards:\\t\\t\\t\\t' % PY +
+PY[0:2] + ' ' + PY[4:6] + ' ' + PY[-6:-4] + ' ' + PY[-2:])
+printMessage('Length of string \\'%s\\':\\t\\t' % LONG_WORD + 'The lenght of the string is ' +
+str(len(LONG_WORD)))
 '''
 },
 }
