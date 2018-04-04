@@ -954,10 +954,12 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 \t\t\u2724 .append(<item>):\t\t\t\t\tAppend an item to the end of the list
 
 
-\t\t\u256D\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u252C\
-\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u256E
+\t\t\u256D\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u252C\u2500\u2500\
+\u2500\u252C\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u256E
 \t\t\u2502 P \u2502 y \u2502 t \u2502 h \u2502 o \u2502 n \u2502
-\t\t+---+---+---+---+---+---+\tif start is not specified it means from the very beginning
+\t\t\u251C\u2500\u2500\u2500\u253C\u2500\u2500\u2500\u253C\u2500\u2500\u2500\u253C\u2500\u2500\
+\u2500\u253C\u2500\u2500\u2500\u253C\u2500\u2500\u2500\u2524\
+\tif start is not specified it means from the very beginning
 \t\t0   1   2   3   4   5   6
 \t   -6  -5  -4  -3  -2  -1   N\tif end is not specified it means until the very end
 
