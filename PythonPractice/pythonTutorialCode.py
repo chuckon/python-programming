@@ -71,16 +71,16 @@ def getSyntaxIntervals(lines):
     m = None
     for i in range(len(lines)):
         if len(lines[i]) > 0:
-            if lines[i][0] == '@':
+            if lines[i][0] == '|':
                 s = i
                 lines[i] = lines[i][1:]
                 m = len(lines[i])
-                if lines[i][len(lines[i]) - 1] == '@':
+                if lines[i][len(lines[i]) - 1] == '|':
                     lines[i] = lines[i][:len(lines[i]) - 1]
                     m = len(lines[i])
                     l.append([s, i, m])
                     s = None
-            elif lines[i][len(lines[i]) - 1] == '@':
+            elif lines[i][len(lines[i]) - 1] == '|':
                 lines[i] = lines[i][:len(lines[i]) - 1]
                 l.append([s, i, m])
                 s = None
@@ -198,15 +198,15 @@ Generates arithmetic progressions as sequences of numbers to be used on iteratio
 '''\
 \t\u23E3 Generates a sequence 0...n-1:
 
-@range(n)@
+|range(n)|
 
 \t\u23E3 Generates a sequence n...m-1:
 
-@range(n, m)@
+|range(n, m)|
 
 \t\u23E3 Generates a sequence n...m-1 with k steps:
 
-@range(n, m, k)@
+|range(n, m, k)|
 ''',
 'example':
 '''\
@@ -238,17 +238,17 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 \t\t\t\t\t\t\t\tdouble it (\\\\)
 \t\u23E3 Concatenate & repeat:\t\tStrings can be concatenated with + and repeated n times with *
 
-@<string_1> + <string_2> + ... + <m> * <string_N>@
+|<string_1> + <string_2> + ... + <m> * <string_N>|
 
 \t\u23E3 Concatenate:\t\t\t\tStrings next to each other in a sequence are automatically
 \t\t\t\t\t\t\t\tconcatenated
 
-@<string_1> <string_2> <string_3> ... <string_N>@
+|<string_1> <string_2> <string_3> ... <string_N>|
 
 \t\u23E3 Slicing:\t\t\t\t\tStrings can be subscripted (indexed) or sliced forwards and
 \t\t\t\t\t\t\t\tbackwards
 
-@<string>[ [start_included[:end_excluded[:step]]] ]@
+|<string>[ [start_included[:end_excluded[:step]]] ]|
 
 \t\u23E3 String methods and common operations:
 \t\t\u2724 <string_1> in <string_2>:\t\tReturn TRUE if the string is within the string,
@@ -258,7 +258,7 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 
 
 \t\t+---+---+---+---+---+---+
-\t\t| P | y | t | h | o | n |
+\t\t\u2502 P \u2502 y \u2502 t \u2502 h \u2502 o \u2502 n \u2502
 \t\t+---+---+---+---+---+---+\tif start is not specified it means from the very beginning
 \t\t0   1   2   3   4   5   6
 \t   -6  -5  -4  -3  -2  -1   N\tif end is not specified it means until the very end
@@ -268,11 +268,11 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 \t\u23E3 Built-in function str():\tWith built-in function str(), a number and mostly any other type
 \t\t\t\t\t\t\t\tof object can be converted to strings (no object returns an empty string)
 
-@str([object])@
+|str([object])|
 
 \t\u23E3 Built-in function len():\tWith built-in function len(), the length of a string can be found
 
-@len(<string_name>)@
+|len(<string_name>)|
 ''',
 'example':
 '''\
@@ -303,11 +303,11 @@ Compound data type to group a comma-separated sequence of values between square 
 '''\
 \t\u23E3 Creation with items:\t\tLists can be defined as an empty list (just []) or with its items
 
-@<list_name> = [ [item1[, item2,]] ... ]@
+|<list_name> = [ [item1[, item2,]] ... ]|
 
 \t\u23E3 Concatenate:\t\t\t\tLists can be concatenated with +
 
-@<list_1> + <list_2> + ... + <list_N>@
+|<list_1> + <list_2> + ... + <list_N>|
 
 \t\u23E3 Slicing:\t\t\t\t\tLists can be subscripted (indexed) or sliced like strings
 \t\u23E3 Built-in function len():\tWith the built-in function len(), the length of a list
@@ -317,7 +317,7 @@ Compound data type to group a comma-separated sequence of values between square 
 \t\u23E3 Built-in function list():\tWith built-in function list() other objects can be
 \t\t\t\t\t\t\t\tconverted to lists (no object returns an empty list)
 
-@list([object])@
+|list([object])|
 
 \t\t\u27F9 Lists unlike strings, are mutable, anything can be changed on them
 
@@ -395,11 +395,11 @@ Compound data type to group a comma-separated sequence of values between parenth
 ''',
 'syntax':
 '''\
-@<tuple_name> = [(][item1[, item2,]] ... [)]@
+|<tuple_name> = [(][item1[, item2,]] ... [)]|
 
 \t\u23E3 Concatenate:\t\t\t\tTuples can be concatenated with +
 
-@<tuple_1> + <tuple_2> + ... + <tuple_N>@
+|<tuple_1> + <tuple_2> + ... + <tuple_N>|
 
 \t\u23E3 Slicing:\t\t\t\t\tTuples can be subscripted (indexed) or sliced like strings
 \t\u23E3 Built-in function len():\tWith the built-in function len(), the length of a tuple
@@ -409,7 +409,7 @@ Compound data type to group a comma-separated sequence of values between parenth
 \t\u23E3 Built-in function tuple():\tWith built-in function tuple() other objects can be
 \t\t\t\t\t\t\t\tconverted to tuples (no object returns an empty tuple)
 
-@tuple([object])@
+|tuple([object])|
 
 \t\t\u27F9 Tuples are immutable, they cannot be changed (can be copied and copies modified)
 
@@ -468,7 +468,7 @@ Branch statement to control the flow of code based on boolean conditions.
 ''',
 'syntax':
 '''\
-@if <expression>:
+|if <expression>:
     <statements>
 elif <expression>:
     <statements>
@@ -476,7 +476,7 @@ elif <expression>:
     <statements>
 ...
 else:
-    <statements>@
+    <statements>|
 ''',
 'example':
 '''\
@@ -501,10 +501,10 @@ Loop statement which executes and iterates as long as a condition remains true.
 ''',
 'syntax':
 '''\
-@while <expression>:
+|while <expression>:
     <statements>
 else:
-    <statements>@
+    <statements>|
 ''',
 'example':
 '''\
@@ -529,10 +529,10 @@ Loop statement which executes and iterates over the items of a sequence on its o
 ''',
 'syntax':
 '''\
-@for <variable> in <sequence>:
+|for <variable> in <sequence>:
     <statements>
 else:
-    <statements>@
+    <statements>|
 ''',
 'example':
 '''\
@@ -556,7 +556,7 @@ Synctactic filler statement that does nothing for other statements and structure
 ''',
 'syntax':
 '''\
-@pass@
+|pass|
 ''',
 'example':
 '''\
@@ -579,7 +579,7 @@ Remove objects from memory like items in lists or lists itselves.
 ''',
 'syntax':
 '''\
-@del <object>@
+|del <object>|
 
 \t\t\u27F9 There is no other way to remove an item from a list given its index.
 \t\t\u27F9 The pop() function returns the value that is being removed.
@@ -597,8 +597,8 @@ Define subroutines and blocks of code to be invoked on demand and repeatedly.
 ''',
 'syntax':
 '''\
-@def <function_name>([keyw_arg1[ = default_value1][, keyw_arg2[ = default_value2]] ...]):
-    <statements>@
+|def <function_name>([keyw_arg1[ = default_value1][, keyw_arg2[ = default_value2]] ...]):
+    <statements>|
 
         \u27F9 If a default value is specified for an argument, that argument becomes optional.
         \u27F9 Arguments with no default value are required.
@@ -606,8 +606,8 @@ Define subroutines and blocks of code to be invoked on demand and repeatedly.
         \u27F9 Arguments can be specified positionally but only before any keyword argument is used.
         \u27F9 A function can be invoked with an arbitrary number of arguments in a list (*args).
 
-@def <function_name>(*args):
-    <statements>@
+|def <function_name>(*args):
+    <statements>|
 ''',
 'example':
 '''\
@@ -665,7 +665,7 @@ Remove objects from memory like items in lists or lists itselves.
 ''',
 'syntax':
 '''\
-@del <object>@
+|del <object>|
 
 \t\t\u27F9 There is no other way to remove an item from a list given its index.
 \t\t\u27F9 The pop() function returns the value that is being removed.
@@ -747,16 +747,16 @@ def getSyntaxIntervals(lines):
     m = None
     for i in range(len(lines)):
         if len(lines[i]) > 0:
-            if lines[i][0] == '@':
+            if lines[i][0] == '|':
                 s = i
                 lines[i] = lines[i][1:]
                 m = len(lines[i])
-                if lines[i][len(lines[i]) - 1] == '@':
+                if lines[i][len(lines[i]) - 1] == '|':
                     lines[i] = lines[i][:len(lines[i]) - 1]
                     m = len(lines[i])
                     l.append([s, i, m])
                     s = None
-            elif lines[i][len(lines[i]) - 1] == '@':
+            elif lines[i][len(lines[i]) - 1] == '|':
                 lines[i] = lines[i][:len(lines[i]) - 1]
                 l.append([s, i, m])
                 s = None
@@ -870,7 +870,7 @@ topic_example = {
 'purpose':
 '<Description_of_the_purpose_of_the_code_topic>',
 'syntax':
-'@<Synctactic_description_of_the_code_topic>@',
+'|<Synctactic_description_of_the_code_topic>|',
 'example':
 'printMessage("<Code_example_of_the_code_topic>")'
 },
@@ -920,42 +920,43 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 \t\u23E3 Concatenate:\t\t\t\tStrings next to each other in a sequence are automatically
 \t\t\t\t\t\t\t\tconcatenated
 
-@<string_1> <string_2> <string_3> ... <string_N>@
+|<string_1> <string_2> <string_3> ... <string_N>|
 
 
 \t\u23E3 String methods and common operations:
 \t\t\u2724 Operator in:\t\t\tReturn TRUE if a string is within the other, FALSE otherwise
 
-@<string_1> in <string_2>@
+|<string_1> in <string_2>|
 
 \t\t\u2724 Opertor not in:\t\t\tReturn TRUE if a string is not within the other, FALSE otherwise
 
-@<string_1> not in <string_2>@
+|<string_1> not in <string_2>|
 
 \t\t\u2724 Operator +:\t\t\t\tConcatenate two or more strings into one
 
-@<string_1> + <string_2> + ... + <string_N>@
+|<string_1> + <string_2> + ... + <string_N>|
 
 \t\t\u2724 Operator *:\t\t\t\tConcatenate a string n times into one
 
-@<n> * <string>@
+|<n> * <string>|
 
 \t\t\u2724 Indexing:\t\t\t\tReturn the character on the position specified by the index
 
-@<string>[<index>]@
+|<string>[<index>]|
 
 \t\u23E3 Slicing:\t\t\t\t\tStrings can be subscripted (indexed) or sliced forwards and
 \t\t\t\t\t\t\t\tbackwards
 
-@<string_name>[ [start_included[:end_excluded[:step]]] ]@
+|<string_name>[ [start_included[:end_excluded[:step]]] ]|
 
 \t\t\u2724 <string>[ [start[:end[:step]]] ]:\tSubscript (index) or slice a string whether
 \t\t\t\t\t\t\t\t\t\t\tforward or backwards
 \t\t\u2724 .append(<item>):\t\t\t\t\tAppend an item to the end of the list
 
 
-\t\t+---+---+---+---+---+---+
-\t\t| P | y | t | h | o | n |
+\t\t\u256D\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u252C\
+\u2500\u2500\u2500\u252C\u2500\u2500\u2500\u256E
+\t\t\u2502 P \u2502 y \u2502 t \u2502 h \u2502 o \u2502 n \u2502
 \t\t+---+---+---+---+---+---+\tif start is not specified it means from the very beginning
 \t\t0   1   2   3   4   5   6
 \t   -6  -5  -4  -3  -2  -1   N\tif end is not specified it means until the very end
@@ -963,13 +964,14 @@ Sequence of characters usually enclosed between quotes to be used mostly as text
 \t\t\u27F9 Strings are immutable, they cannot be changed (can be copied and copies modified)
 
 \t\u23E3 Built-in function str():\tWith built-in function str(), a number and mostly any other type
-\t\t\t\t\t\t\t\tof object can be converted to strings (no object returns an empty string)
+\t\t\t\t\t\t\t\tof object can be converted to strings
+\t\t\t\t\t\t\t\t(no object returns an empty string)
 
-@str([object])@
+|str([object])|
 
 \t\u23E3 Built-in function len():\tWith built-in function len(), the length of a string can be found
 
-@len(<string_name>)@
+|len(<string_name>)|
 ''',
 'example':
 '''\
