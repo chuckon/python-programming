@@ -138,6 +138,22 @@ def printMessage(s=None):
             else:
                 printMessageLine(lines[i])
 
+# Function to format a string in a cube format
+def cubeMessage(s):
+    s = s.upper()
+    t = '\u256D\u2500\u2500\u2500'
+    m = '\u2502 ' + s[0] + ' '
+    b = '\u2570\u2500\u2500\u2500'
+    for i in range(1, len(s)):
+        t += '\u252C\u2500\u2500\u2500'
+        m += '\u2502 ' + s[i] + ' '
+        b += '\u2534\u2500\u2500\u2500'
+    t += '\u256E'
+    m += '\u2502'
+    b += '\u256F'
+    return (t, m, b)
+
+
 # Function to print a higher hierarchy divider
 def printDivider():
     print(105 * '\u2550')
@@ -155,7 +171,11 @@ def printHeader():
 # Function to print all code topics
 def printCodeTopics(codeInfo):
     for topic in codeInfo:
-        print('\n\u25BD ' + topic + '\n')
+        t, m, b = cubeMessage(topic)
+        #        print('\n\u25BD ' + topic + '\n')
+        print('\n' + ' ' * (len(topic) + 3) + t)
+        print('\u25BD ' + topic + ' ' + m)
+        print(' ' * (len(topic) + 3) + b + '\n')
         printDivider2()
         print('\n\t\u2318 Purpose & Syntax\n')
         printDivider2()
@@ -995,6 +1015,24 @@ str(len(LONG_WORD)))
 },
 }
 
+def x(s):
+    t = '\u256D\u2500\u2500\u2500'
+    m = '\u2502 ' + s[0] + ' '
+    b = '\u2570\u2500\u2500\u2500'
+    for i in range(1, len(s)):
+        t += '\u252C\u2500\u2500\u2500'
+        m += '\u2502 ' + s[i] + ' '
+        b += '\u2534\u2500\u2500\u2500'
+    t += '\u256E'
+    m += '\u2502'
+    b += '\u256F'
+    print(t)
+    print(m)
+    print(b)
+
+
+
 # Main function to run the live code tutorial
 runLiveCodeTutorial()
 
+x('Carlos')
