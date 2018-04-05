@@ -138,22 +138,6 @@ def printMessage(s=None):
             else:
                 printMessageLine(lines[i])
 
-# Function to format a string in a cube format
-def cubeMessage(s):
-    s = s.upper()
-    t = '\u256D\u2500\u2500\u2500'
-    m = '\u2502 ' + s[0] + ' '
-    b = '\u2570\u2500\u2500\u2500'
-    for i in range(1, len(s)):
-        t += '\u252C\u2500\u2500\u2500'
-        m += '\u2502 ' + s[i] + ' '
-        b += '\u2534\u2500\u2500\u2500'
-    t += '\u256E'
-    m += '\u2502'
-    b += '\u256F'
-    return (t, m, b)
-
-
 # Function to print a higher hierarchy divider
 def printDivider():
     print(105 * '\u2550')
@@ -168,11 +152,27 @@ def printHeader():
     print('\n' + '\u27F0 Python 3.6' + '\n')
     printDivider()
 
+# Function to format a string in a cube format
+def cubeMessage(s):
+    if len(s) > 25:
+        pass
+    s = s.upper()
+    t = '\u256D\u2500\u2500\u2500'
+    m = '\u2502 ' + s[0] + ' '
+    b = '\u2570\u2500\u2500\u2500'
+    for i in range(1, len(s)):
+        t += '\u252C\u2500\u2500\u2500'
+        m += '\u2502 ' + s[i] + ' '
+        b += '\u2534\u2500\u2500\u2500'
+    t += '\u256E'
+    m += '\u2502'
+    b += '\u256F'
+    return (t, m, b)
+
 # Function to print all code topics
 def printCodeTopics(codeInfo):
     for topic in codeInfo:
         t, m, b = cubeMessage(topic)
-        #        print('\n\u25BD ' + topic + '\n')
         print('\n' + ' ' * (len(topic) + 3) + t)
         print('\u25BD ' + topic + ' ' + m)
         print(' ' * (len(topic) + 3) + b + '\n')
@@ -705,7 +705,8 @@ except NameError as exc:
 '''
 },
 # **************************************************************************************************
-'Appendix:  Variables and functions used':
+#'Appendix:  Variables and functions used':
+'Appendix:  Variables and ':
 {
 'purpose':
 '''\
@@ -848,10 +849,28 @@ def printHeader():
     print('\\n' + '\\u27F0 Python 3.6' + '\\n')
     printDivider()
 
-# Function to execute and run the whole live code tutorial
+# Function to format a string in a cube format
+def cubeMessage(s):
+    s = s.upper()
+    t = '\u256D\u2500\u2500\u2500'
+    m = '\u2502 ' + s[0] + ' '
+    b = '\u2570\u2500\u2500\u2500'
+    for i in range(1, len(s)):
+        t += '\u252C\u2500\u2500\u2500'
+        m += '\u2502 ' + s[i] + ' '
+        b += '\u2534\u2500\u2500\u2500'
+    t += '\u256E'
+    m += '\u2502'
+    b += '\u256F'
+    return (t, m, b)
+
+# Function to print all code topics
 def printCodeTopics(codeInfo):
     for topic in codeInfo:
-        print('\\n\\u25BD ' + topic + '\\n')
+        t, m, b = cubeMessage(topic)
+        print('\n' + ' ' * (len(topic) + 3) + t)
+        print('\u25BD ' + topic + ' ' + m)
+        print(' ' * (len(topic) + 3) + b + '\n')
         printDivider2()
         print('\\n\\t\\u2318 Purpose & Syntax\\n')
         printDivider2()
