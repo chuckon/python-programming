@@ -154,8 +154,8 @@ def printHeader():
 
 # Function to format a string in a cube format
 def cubeMessage(s):
-    if len(s) > 25:
-        pass
+    if len(s) > 20:
+        s = s.split()[0]
     s = s.upper()
     t = '\u256D\u2500\u2500\u2500'
     m = '\u2502 ' + s[0] + ' '
@@ -705,8 +705,7 @@ except NameError as exc:
 '''
 },
 # **************************************************************************************************
-#'Appendix:  Variables and functions used':
-'Appendix:  Variables and ':
+'Appendix:  Variables and functions used':
 {
 'purpose':
 '''\
